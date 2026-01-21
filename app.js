@@ -646,22 +646,26 @@ function initCurrency() {
 }
 
 async function fetchExchangeRate() {
+  // 使用固定匯率 0.2，不從 API 取得
+  // 如果需要即時匯率，可以取消下方註解
+  /*
   try {
-    // 使用免費的匯率 API
     const response = await fetch(
       "https://api.exchangerate-api.com/v4/latest/JPY",
     );
     if (response.ok) {
       const data = await response.json();
       exchangeRate = data.rates.TWD;
-
-      const rateNote = document.getElementById("rateNote");
-      if (rateNote) {
-        rateNote.textContent = `即時匯率：1 JPY ≈ ${exchangeRate.toFixed(4)} TWD`;
-      }
     }
   } catch (error) {
     console.log("無法獲取即時匯率，使用預設值");
+  }
+  */
+  
+  // 更新顯示
+  const rateNote = document.getElementById("rateNote");
+  if (rateNote) {
+    rateNote.textContent = `參考匯率：1 JPY ≈ ${exchangeRate} TWD`;
   }
 }
 
