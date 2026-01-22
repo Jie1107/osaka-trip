@@ -44,7 +44,7 @@
                     <span class="trip-tag"><i class="fas fa-users"></i> 學生情侶</span>
                     <span class="trip-tag"><i class="fas fa-plane"></i> 桃園→關西 7/27、關西→桃園 8/1</span>
                     <span class="trip-tag"><i class="fas fa-bed"></i> 京都2晚/大阪3晚</span>
-                    <span class="trip-tag"><i class="fas fa-ticket"></i> HARUKA/USJ/Harukas 300</span>
+                    <span class="trip-tag haruka"><i class="fas fa-ticket"></i> HARUKA/USJ/Harukas 300</span>
                     <span class="trip-tag"><i class="fas fa-credit-card"></i> ICOCA/Suica</span>
                     <span class="trip-tag alert"><i class="fas fa-fish"></i> 不吃海鮮</span>
                 </div>
@@ -134,6 +134,22 @@
             <!-- 行前準備 -->
             <div class="sub-page active" id="subtab-prep">
                 <div class="accordion-list">
+                                        <div class="accordion">
+                                            <div class="accordion-header">
+                                                <span>必買票券（出發前買好）</span>
+                                                <i class="fas fa-chevron-down"></i>
+                                            </div>
+                                            <div class="accordion-body">
+                                                <ul class="check-list">
+                                                    <li><i class="fas fa-ticket haruka"></i> <b class="haruka-text">JR HARUKA 特急車票</b>（Klook/官方，電子票可直接刷 QR Code）</li>
+                                                    <li><i class="fas fa-ticket"></i> <b>USJ 門票</b>（USJ App 綁定，建議加購快速通關）</li>
+                                                    <li><i class="fas fa-ticket"></i> <b>阿倍野 Harukas 300 展望台門票</b>（Klook/官網預約）</li>
+                                                    <li><i class="fas fa-ticket"></i> <b>國產牛燒肉吃到飽（あぶりや）</b>（建議線上預約天王寺店或難波店）</li>
+                                                    <li><i class="fas fa-ticket"></i> <b>ICOCA/Suica 交通卡</b>（可於台灣先購買或日本機場現場購買）</li>
+                                                </ul>
+                                                <div class="tip-box info">熱門票券建議出發前一週內完成預約，避免現場排隊或售罄。</div>
+                                            </div>
+                                        </div>
                     <div class="accordion">
                         <div class="accordion-header">
                             <span>Visit Japan Web 申請</span>
@@ -461,11 +477,11 @@
                         <div class="accordion-body">
                             <div class="station-lines">
                                                                 <div class="line-item jr">
-                                                                    <div class="line-badge">JR</div>
+                                                                    <div class="line-badge haruka">JR</div>
                                                                     <div class="line-info">
-                                                                        <strong>JR 關西機場線（HARUKA）</strong>
+                                                                        <strong class="haruka-text">JR 關西機場線（HARUKA）</strong>
                                                                         <p>往京都、天王寺、新大阪</p>
-                                                                        <p class="line-hint">找綠色「JR」標誌，特急 HARUKA 直達京都</p>
+                                                                        <p class="line-hint haruka-text">找綠色「JR」標誌，<span class="haruka-text">特急 HARUKA</span> 直達京都</p>
                                                                     </div>
                                                                     <button class="btn-map-sm" data-place="関西国際空港駅"><i class="fas fa-location-dot"></i></button>
                                                                 </div>
@@ -800,12 +816,23 @@
             <h2>難波交通速查</h2>
             <div class="transit-table">
                 <div class="transit-row header"><span>目的地</span><span>搭什麼</span><span>費用</span></div>
-                <div class="transit-row"><span>關西機場</span><span class="line jr">JR HARUKA（特急直達）</span><span>¥2,380</span></div>
+                <div class="transit-row"><span>關西機場</span><span class="line haruka">JR HARUKA（特急直達）</span><span>¥2,380</span></div>
                 <div class="transit-row"><span>關西機場</span><span class="line nankai">南海電鐵</span><span>¥970</span></div>
                 <div class="transit-row"><span>奈良</span><span class="line kintetsu">近鐵電車</span><span>¥680</span></div>
                 <div class="transit-row"><span>梅田</span><span class="line metro">御堂筋線</span><span>¥240</span></div>
                 <div class="transit-row"><span>USJ</span><span class="line hanshin">阪神→JR</span><span>¥450</span></div>
-                <div class="transit-row"><span>京都</span><span class="line jr">JR HARUKA（特急直達）</span><span>¥2,980</span></div>
+                <div class="transit-row"><span>京都</span><span class="line haruka">JR HARUKA（特急直達）</span><span>¥2,980</span></div>
+                                    <div class="timeline-item"><div class="tl-time">08:30</div><div class="tl-content"><strong>【移動】飯店 → 嵐山</strong><p>走法：飯店走 3 分鐘進京都車站 → 32/33 月台搭乘 JR 嵯峨野線。下車：JR 嵯峨嵐山站 (約 15 分鐘)</p><button class="btn-map" data-place="嵐山竹林"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                                    <div class="timeline-item"><div class="tl-time">09:00</div><div class="tl-content"><strong>嵐山竹林小徑 + 野宮神社</strong><p>早點到，享受沒有旅行團的竹林</p><button class="btn-map" data-place="野宮神社"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                                    <div class="timeline-item"><div class="tl-time">10:00</div><div class="tl-content"><strong>天龍寺 (曹源池庭園)</strong><p>坐在大方丈的榻榻米上欣賞庭園，極度放鬆</p><button class="btn-map" data-place="天龍寺"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                                    <div class="timeline-item"><div class="tl-time">11:30</div><div class="tl-content"><strong>嵐山大街 + 渡月橋</strong><p>點心：抹茶冰淇淋、Yojiya 咖啡</p><button class="btn-map" data-place="渡月橋"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                                    <div class="timeline-item"><div class="tl-time">15:00</div><div class="tl-content"><strong>清水寺 + 二年坂・三年坂 + 花見小路</strong><p>參觀清水舞台，沿石板路散步下山</p><button class="btn-map" data-place="清水寺"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                                    <div class="timeline-item"><div class="tl-time">18:00</div><div class="tl-content"><strong>晚餐：河原町商圈</strong><p>推薦：名代豬排 (Katsukura) 或 一蘭拉麵</p><button class="btn-map" data-place="河原町"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                                    <div class="timeline-item"><div class="tl-time">08:30</div><div class="tl-content"><strong>【移動】京都 → 伏見稻荷（寄放行李）</strong><p>京都車站 8-10 月台搭 JR 奈良線 (普通車) 至稻荷站</p><button class="btn-map" data-place="伏見稻荷大社"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                                    <div class="timeline-item"><div class="tl-time">08:40</div><div class="tl-content"><strong>伏見稻荷大社 (千本鳥居)</strong><p>拍照打卡，走到「奧社」即可折返</p><button class="btn-map" data-place="伏見稻荷大社"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                                    <div class="timeline-item"><div class="tl-time">10:00</div><div class="tl-content"><strong>【移動】伏見稻荷 → 奈良（寄放行李）</strong><p>回稻荷站搭 JR 奈良線 (快速) 至 JR 奈良站</p><button class="btn-map" data-place="奈良公園"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                                    <div class="timeline-item"><div class="tl-time">12:45</div><div class="tl-content"><strong>奈良公園 (餵鹿) + 東大寺</strong><p>交通：JR 奈良站搭黃色巴士到東大寺，回程步行至近鐵奈良站</p><button class="btn-map" data-place="東大寺"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                                    <div class="timeline-item"><div class="tl-time">13:30</div><div class="tl-content"><strong>【移動】嵐山 → 清水寺 (關鍵！)</strong><p>方式：直接搭計程車 (Taxi) 或轉JR</p><button class="btn-map" data-place="清水寺"><i class="fas fa-location-dot"></i> MAP</button></div></div>
                 <div class="transit-row"><span>京都</span><span class="line">阪急電車</span><span>¥400</span></div>
             </div>
             <div class="tip-box warning" style="margin-top:16px;">避開要加錢的特急：<br>南海 Rapi:t（藍色）<br>近鐵特急（紅色）</div>
