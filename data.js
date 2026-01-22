@@ -385,39 +385,77 @@ const locations = {
 
 // 行程資料（用於分享功能）
 const tripData = {
-  title: "大阪 6 日自由行",
+  title: "京阪神 6 天自由行",
   dates: "2026/7/27 - 8/1",
   travelers: "學生情侶",
   days: [
     {
       date: "7/27",
-      title: "抵達・道頓堀",
-      highlights: ["關西機場", "道頓堀", "心齋橋"],
+      title: "抵達關西・直奔京都",
+      highlights: [
+        "關西機場",
+        "JR HARUKA",
+        "京都車站",
+        "鴨川/先斗町",
+        "京都勝牛",
+      ],
     },
     {
       date: "7/28",
-      title: "大阪城・梅田",
-      highlights: ["大阪城", "通天閣", "藍天大廈夜景"],
+      title: "嵐山漫步・天龍寺・清水寺",
+      highlights: [
+        "嵐山竹林",
+        "天龍寺",
+        "渡月橋",
+        "清水寺",
+        "二年坂三年坂",
+        "花見小路",
+        "河原町",
+      ],
     },
     {
       date: "7/29",
-      title: "京都一日遊",
-      highlights: ["嵐山竹林", "清水寺", "祇園"],
+      title: "伏見稻荷・奈良・移動至大阪",
+      highlights: [
+        "伏見稻荷大社",
+        "奈良公園",
+        "東大寺",
+        "大阪難波",
+        "道頓堀/心齋橋",
+        "大阪燒",
+      ],
     },
     {
       date: "7/30",
-      title: "環球影城",
-      highlights: ["USJ 全日", "哈利波特園區"],
+      title: "USJ 環球影城 (無快通)",
+      highlights: [
+        "USJ 全日",
+        "哈利波特",
+        "小小兵樂園",
+        "超級任天堂世界",
+        "金龍拉麵",
+      ],
     },
     {
       date: "7/31",
-      title: "黑門市場・購物",
-      highlights: ["黑門市場", "日本橋", "阿倍野"],
+      title: "大阪漫遊・阿倍野絕景",
+      highlights: [
+        "大阪城公園",
+        "黑門市場",
+        "通天閣/新世界",
+        "阿倍野 Harukas 300",
+        "國產牛燒肉 あぶりや",
+      ],
     },
     {
       date: "8/1",
-      title: "OUTLET・回程",
-      highlights: ["臨空城 OUTLET", "關西機場"],
+      title: "Rinku Outlet・回程",
+      highlights: [
+        "臨空城 OUTLET",
+        "大理石海灘",
+        "Rinku Premium Outlets",
+        "關西機場",
+      ],
     },
   ],
 };

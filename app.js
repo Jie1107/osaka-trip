@@ -129,33 +129,82 @@ function initHotel() {
 
   if (!hotelEditBtn) return;
 
-  // 載入儲存的飯店資訊
-  const savedHotel = JSON.parse(localStorage.getItem("hotelInfo"));
-  if (savedHotel && hotelName && hotelAddress) {
-    hotelName.textContent = savedHotel.name;
-    hotelAddress.textContent = savedHotel.address;
+  // 載入儲存的雙飯店資訊
+  const savedHotels = JSON.parse(localStorage.getItem("hotelsInfo")) || {
+    kyoto: {
+      name: "Hotel M's Est Kyoto Station South",
+      address: "京都市南區東九條室町55-1",
+    },
+    osaka: {
+      name: "Hotel Boti Boti (難波)",
+      address: "大阪市中央區難波3-8-17",
+    },
+  };
+
+  // 根據目前所選日自動顯示正確飯店
+  function updateHotelDisplayByDay(dayIdx) {
+    let hotel, city;
+    if (dayIdx === 0 || dayIdx === 1) {
+      hotel = savedHotels.kyoto;
+      city = "kyoto";
+    } else {
+      hotel = savedHotels.osaka;
+      city = "osaka";
+    }
+    if (hotelName)
+      hotelName.innerHTML = `${city === "kyoto" ? "京都2晚：" : "大阪3晚："}${hotel.name}`;
+    if (hotelAddress)
+      hotelAddress.innerHTML = `${city === "kyoto" ? "京都：" : "大阪："}${hotel.address}`;
     if (hotelMapBtn) hotelMapBtn.style.display = "inline-flex";
   }
 
+  // 取得目前所選 day index
+  function getCurrentDayIdx() {
+    const activeDay = document.querySelector(".day-btn.active");
+    if (activeDay) {
+      return parseInt(activeDay.dataset.day, 10) - 1;
+    }
+    return 0;
+  }
+
+  // 首次載入時根據 Day 1 顯示
+  updateHotelDisplayByDay(0);
+
+  // 切換行程日時自動切換飯店顯示
+  const dayBtns = document.querySelectorAll(".day-btn");
+  dayBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      updateHotelDisplayByDay(getCurrentDayIdx());
+    });
+  });
+
+  // 編輯飯店時，彈窗選擇京都/大阪
   hotelEditBtn.addEventListener("click", () => {
-    if (hotelNameInput) hotelNameInput.value = hotelName?.textContent || "";
-    if (hotelAddressInput)
-      hotelAddressInput.value = hotelAddress?.textContent || "";
+    // 依目前 day index 決定預設編輯哪間
+    const idx = getCurrentDayIdx();
+    const city = idx === 0 || idx === 1 ? "kyoto" : "osaka";
+    if (hotelNameInput) hotelNameInput.value = savedHotels[city].name;
+    if (hotelAddressInput) hotelAddressInput.value = savedHotels[city].address;
+    hotelEdit.setAttribute("data-city", city);
     if (hotelDisplay) hotelDisplay.style.display = "none";
     if (hotelEdit) hotelEdit.classList.remove("hidden");
   });
 
   hotelSaveBtn?.addEventListener("click", () => {
-    const name = hotelNameInput?.value.trim() || "Best Western Joytel Osaka";
+    const city = hotelEdit.getAttribute("data-city") || "kyoto";
+    const name =
+      hotelNameInput?.value.trim() ||
+      (city === "kyoto"
+        ? "Hotel M's Est Kyoto Station South"
+        : "Hotel Boti Boti (難波)");
     const address =
-      hotelAddressInput?.value.trim() || "大阪市中央區千日前2-8-17";
-
-    if (hotelName) hotelName.textContent = name;
-    if (hotelAddress) hotelAddress.textContent = address;
-    if (hotelMapBtn) hotelMapBtn.style.display = "inline-flex";
-
-    localStorage.setItem("hotelInfo", JSON.stringify({ name, address }));
-
+      hotelAddressInput?.value.trim() ||
+      (city === "kyoto"
+        ? "京都市南區東九條室町55-1"
+        : "大阪市中央區難波3-8-17");
+    savedHotels[city] = { name, address };
+    localStorage.setItem("hotelsInfo", JSON.stringify(savedHotels));
+    updateHotelDisplayByDay(getCurrentDayIdx());
     if (hotelDisplay) hotelDisplay.style.display = "block";
     if (hotelEdit) hotelEdit.classList.add("hidden");
   });
@@ -166,7 +215,10 @@ function initHotel() {
   });
 
   hotelMapBtn?.addEventListener("click", () => {
-    const address = hotelAddress?.textContent;
+    // 根據目前 day index 導航正確飯店
+    const idx = getCurrentDayIdx();
+    const city = idx === 0 || idx === 1 ? "kyoto" : "osaka";
+    const address = savedHotels[city].address;
     if (address) {
       window.open(
         `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
@@ -279,14 +331,56 @@ function initMapButtons() {
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
 
-      // 飯店導航按鈕 - 使用儲存的飯店地址
-      if (isHotelNav) {
-        const savedHotel = JSON.parse(
-          localStorage.getItem("osakaHotel") || "{}",
-        );
-        const hotelAddress = savedHotel.address || savedHotel.name || "難波";
+      // 智慧判斷「回飯店」按鈕
+      if (btn.classList.contains("hotel-return-btn")) {
+        // 根據 timeline 所屬 day，導航正確飯店
+        const dayPage = btn.closest(".day-page");
+        let dayIdx = 0;
+        if (dayPage && dayPage.id && dayPage.id.startsWith("day-")) {
+          dayIdx = parseInt(dayPage.id.replace("day-", ""), 10) - 1;
+        }
+        const hotels = JSON.parse(localStorage.getItem("hotelsInfo")) || {
+          kyoto: {
+            name: "Hotel M's Est Kyoto Station South",
+            address: "京都市南區東九條室町55-1",
+          },
+          osaka: {
+            name: "Hotel Boti Boti (難波)",
+            address: "大阪市中央區難波3-8-17",
+          },
+        };
+        const city = dayIdx === 0 || dayIdx === 1 ? "kyoto" : "osaka";
+        const address = hotels[city].address;
         window.open(
-          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hotelAddress)}`,
+          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
+          "_blank",
+        );
+        return;
+      }
+
+      // 原有飯店導航按鈕
+      if (isHotelNav) {
+        const hotels = JSON.parse(localStorage.getItem("hotelsInfo")) || {
+          kyoto: {
+            name: "Hotel M's Est Kyoto Station South",
+            address: "京都市南區東九條室町55-1",
+          },
+          osaka: {
+            name: "Hotel Boti Boti (難波)",
+            address: "大阪市中央區難波3-8-17",
+          },
+        };
+        // 依目前 day index
+        const idx = document.querySelector(".day-btn.active")
+          ? parseInt(
+              document.querySelector(".day-btn.active").dataset.day,
+              10,
+            ) - 1
+          : 0;
+        const city = idx === 0 || idx === 1 ? "kyoto" : "osaka";
+        const address = hotels[city].address;
+        window.open(
+          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
           "_blank",
         );
         return;
