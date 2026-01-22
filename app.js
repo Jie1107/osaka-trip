@@ -133,8 +133,7 @@ function initHotel() {
   const savedHotels = JSON.parse(localStorage.getItem("hotelsInfo")) || {
     kyoto: {
       name: "Hotel M's Est Kyoto Station South",
-      address:
-        "7-7-5 Higashikujo Kitakarasumacho, Minami Ward, Kyoto, 601-8017日本",
+      address: "601-8002 京都府京都市南区東九条上殿田町４８−１",
     },
     osaka: {
       name: "Hotel Boti Boti (難波)",
@@ -201,7 +200,7 @@ function initHotel() {
     const address =
       hotelAddressInput?.value.trim() ||
       (city === "kyoto"
-        ? "7-7-5 Higashikujo Kitakarasumacho, Minami Ward, Kyoto, 601-8017日本"
+        ? "601-8002 京都府京都市南区東九条上殿田町４８−１"
         : "大阪市中央區難波3-8-17");
     savedHotels[city] = { name, address };
     localStorage.setItem("hotelsInfo", JSON.stringify(savedHotels));
@@ -216,17 +215,10 @@ function initHotel() {
   });
 
   hotelMapBtn?.addEventListener("click", () => {
-    // 根據目前 day index 導航正確飯店，移除多餘地名關鍵字避免搜尋錯誤
+    // 根據目前 day index 導航正確飯店，直接用正確地址
     const idx = getCurrentDayIdx();
     const city = idx === 0 || idx === 1 ? "kyoto" : "osaka";
-    let address = savedHotels[city].address;
-    // 移除常見多餘字串
-    address = address
-      .replace(/\b大版\b|\b大阪\b|\b京都\b/gi, "")
-      .replace(/\s+/g, " ")
-      .trim();
-    // 但若是京都飯店，仍保留完整地址
-    if (city === "kyoto") address = savedHotels[city].address;
+    const address = savedHotels[city].address;
     if (address) {
       window.open(
         `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
@@ -350,7 +342,7 @@ function initMapButtons() {
         const hotels = JSON.parse(localStorage.getItem("hotelsInfo")) || {
           kyoto: {
             name: "Hotel M's Est Kyoto Station South",
-            address: "京都市南區東九條室町55-1",
+            address: "601-8002 京都府京都市南区東九条上殿田町４８−１",
           },
           osaka: {
             name: "Hotel Boti Boti (難波)",
@@ -371,7 +363,7 @@ function initMapButtons() {
         const hotels = JSON.parse(localStorage.getItem("hotelsInfo")) || {
           kyoto: {
             name: "Hotel M's Est Kyoto Station South",
-            address: "京都市南區東九條室町55-1",
+            address: "601-8002 京都府京都市南区東九条上殿田町４８−１",
           },
           osaka: {
             name: "Hotel Boti Boti (難波)",
@@ -395,11 +387,28 @@ function initMapButtons() {
       }
 
       if (place) {
-        // 使用日文地名搜尋更精確
+        // 使用日文地名搜尋更精確，並自動判斷地區
         const location = locations[place];
-        const searchQuery = location ? location.nameJp : place;
+        let searchQuery = location ? location.nameJp : place;
+        // 根據地點自動補城市
+        if (searchQuery) {
+          // 若地名已含「大阪」「京都」「奈良」等，不再補
+          if (!/大阪|京都|奈良/.test(searchQuery)) {
+            if (
+              /嵐山|清水寺|伏見|祇園|金閣寺|天龍寺|八坂|河原町|花見小路|二年坂|三年坂/.test(
+                searchQuery,
+              )
+            ) {
+              searchQuery += " 京都";
+            } else if (/奈良|東大寺|春日大社|鹿/.test(searchQuery)) {
+              searchQuery += " 奈良";
+            } else if (!/USJ|ユニバーサル|環球/.test(searchQuery)) {
+              searchQuery += " 大阪";
+            }
+          }
+        }
         window.open(
-          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery + " 大阪")}`,
+          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`,
           "_blank",
         );
       }
