@@ -33,6 +33,29 @@
         
         <!-- ===== 首頁 ===== -->
         <section class="tab-page active" id="tab-home">
+            <!-- 行前代辦事項 -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-list-check"></i> 行前代辦事項</h3>
+                </div>
+                <ul class="todo-list">
+                    <li><input type="checkbox"> 機票（ez網-my way卡）：7/27 桃園出發、8/1 關西回程</li>
+                    <li><input type="checkbox"> 住宿(agoda/booking用my way 卡)：京都 (2晚)：京都站南 M's Est；大阪 (3晚)： Hotel Boti Boti</li>
+                    <li><input type="checkbox"> JR HARUKA 車票 (去程單程：KIX→京都)（LinePay/Klook）</li>
+                    <li><input type="checkbox"> USJ 門票 (Day 4 用，記得存入 USJ App)（LinePay/Klook）</li>
+                    <li><input type="checkbox"> 阿倍野 Harukas 300 門票（LinePay/Klook）</li>
+                    <li><input type="checkbox"> 交通卡：手機綁 Suica，並先儲值好 ¥5000</li>
+                    <li><input type="checkbox"> eSIM 可以不同家</li>
+                    <li><input type="checkbox"> 保險（出發前一個月）</li>
+                    <li><input type="checkbox"> 大行李箱*2、背包、小包</li>
+                    <li><input type="checkbox"> 換匯</li>
+                    <li><input type="checkbox"> 辦護照</li>
+                    <li><input type="checkbox"> 役男出境申請</li>
+                    <li><input type="checkbox"> Visit Japan Web 申請QRCode</li>
+                    <li><input type="checkbox"> 預約和服店</li>
+                    <li><input type="checkbox"> 預約燒肉店</li>
+                </ul>
+            </div>
             <!-- 倒數卡片 -->
             <div class="countdown-card">
                 <div class="countdown-main">
@@ -58,8 +81,8 @@
                     <button class="icon-btn" id="editHotelBtn"><i class="fas fa-pen"></i></button>
                 </div>
                 <div id="hotelDisplay">
-                    <p class="hotel-name" id="hotelNameDisplay">京都2晚：Hotel M's Est Kyoto Station South<br>大阪3晚：Hotel Boti Boti (難波)</p>
-                    <p class="hotel-address" id="hotelAddressDisplay">京都：7-7-5 Higashikujo Kitakarasumacho, Minami Ward, Kyoto, 601-8017日本<br>大阪：大阪市中央區難波3-8-17</p>
+                    <p class="hotel-name" id="hotelNameDisplay">京都2晚：Hotel M's Est Kyoto Station South（Agoda/Booking，my way卡）<br>大阪3晚：Hotel Boti Boti (難波)（Agoda/Booking，my way卡）</p>
+                    <p class="hotel-address" id="hotelAddressDisplay">京都：601-8002 京都府京都市南区東九条上殿田町４８−１<br>大阪：大阪市中央區難波3-8-17</p>
                     <button class="btn-map" id="hotelMapBtn" style="display:none;">
                         <i class="fas fa-location-dot"></i> 導航
                     </button>
@@ -72,6 +95,16 @@
                         <button class="btn btn-ghost" id="cancelHotelBtn">取消</button>
                     </div>
                 </div>
+            </div>
+            <!-- 航班資訊 -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-plane"></i> 航班資訊</h3>
+                </div>
+                <ul class="flight-list">
+                    <li>去程：CX564 (TPE 11:05 - KIX 14:55)</li>
+                    <li>回程：CX565 (KIX 16:15 - TPE 18:15)</li>
+                </ul>
             </div>
 
             <!-- 常用溝通卡 -->
