@@ -136,7 +136,7 @@ function initHotel() {
       address: "601-8002 京都府京都市南区東九条上殿田町４８−１",
     },
     osaka: {
-      name: "Hotel Boti Boti (難波)",
+      name: "Hotel Boti Boti",
       address: "大阪市中央區難波3-8-17",
     },
   };
@@ -196,7 +196,7 @@ function initHotel() {
       hotelNameInput?.value.trim() ||
       (city === "kyoto"
         ? "Hotel M's Est Kyoto Station South"
-        : "Hotel Boti Boti (難波)");
+        : "Hotel Boti Boti");
     const address =
       hotelAddressInput?.value.trim() ||
       (city === "kyoto"
@@ -345,7 +345,7 @@ function initMapButtons() {
             address: "601-8002 京都府京都市南区東九条上殿田町４８−１",
           },
           osaka: {
-            name: "Hotel Boti Boti (難波)",
+            name: "Hotel Boti Boti",
             address: "大阪市中央區難波3-8-17",
           },
         };
@@ -366,7 +366,7 @@ function initMapButtons() {
             address: "601-8002 京都府京都市南区東九条上殿田町４８−１",
           },
           osaka: {
-            name: "Hotel Boti Boti (難波)",
+            name: "Hotel Boti Boti",
             address: "大阪市中央區難波3-8-17",
           },
         };

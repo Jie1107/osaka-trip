@@ -186,6 +186,48 @@ const japaneseData = [
 
 // 地點資料（用於地圖導航）+ 營業時間
 const locations = {
+  // 京都飯店
+  "Hotel M's Est Kyoto Station South": {
+    name: "Hotel M's Est Kyoto Station South",
+    nameJp: "Hotel M's Est Kyoto Station South",
+    hours: "Check-in 16:00",
+  },
+  // 大阪飯店
+  "Hotel Boti Boti": {
+    name: "Hotel Boti Boti",
+    nameJp: "Hotel Boti Boti",
+    hours: "Check-in 16:00",
+  },
+  // 先斗町
+  Kashiwayacho: {
+    name: "Kashiwayacho",
+    nameJp: "先斗町 柏屋町",
+    hours: "餐廳/酒吧 17:00-23:00 (依店家)",
+  },
+  // 野宮神社
+  野宮神社: {
+    name: "野宮神社",
+    nameJp: "野宮神社",
+    hours: "9:00-17:00",
+  },
+  // 炸牛排 京都勝牛 京都站前店
+  "炸牛排 京都勝牛 京都站前店": {
+    name: "炸牛排 京都勝牛 京都站前店",
+    nameJp: "京都勝牛 京都駅前店",
+    hours: "11:00-22:00",
+  },
+  // 燒肉力丸 難波道頓堀店
+  "燒肉力丸 難波道頓堀店": {
+    name: "燒肉力丸 難波道頓堀店",
+    nameJp: "焼肉力丸 難波道頓堀店",
+    hours: "11:30-23:00",
+  },
+  // 金龍拉麵
+  金龍拉麵: {
+    name: "金龍拉麵",
+    nameJp: "金龍ラーメン",
+    hours: "24H",
+  },
   // 機場
   桃園國際機場第一航廈: {
     name: "桃園國際機場第一航廈",
@@ -399,9 +441,11 @@ const tripData = {
         "ICOCA+HARUKA 票券購買",
         "JR HARUKA 特急",
         "京都車站",
-        "飯店寄放行李",
+        "Hotel M's Est Kyoto Station South",
+        "Check-in導航直接搜Hotel M's Est Kyoto Station South",
         "鴨川/先斗町 散步",
-        "京都勝牛 晚餐",
+        "Kashiwayacho",
+        "京都勝牛 (炸牛排)直接搜炸牛排 京都勝牛 京都站前店 日本〒600-8211 Kyoto, Shimogyo Ward, Maoyacho, 211",
         "飯店入住",
       ],
     },
@@ -409,34 +453,37 @@ const tripData = {
       date: "7/28",
       title: "嵐山・清水寺・祇園",
       highlights: [
+        "【移動】飯店 → 嵐山 (JR嵯峨野線)",
         "嵐山竹林小徑",
-        "天龍寺",
+        "野宮神社",
+        "天龍寺 (曹源池庭園)",
         "渡月橋",
-        "金閣寺",
+        "嵐山大街",
+        "午餐：廣川鰻魚飯 或 嵐山吉村",
+        "【移動】嵐山 → 清水寺 (計程車或JR)",
         "清水寺",
         "二年坂三年坂",
         "花見小路",
         "八坂神社",
         "祇園",
-        "河原町購物",
+        "晚餐：名代豬排 (Katsukura) 或 一蘭拉麵",
+        "導航回飯店",
       ],
     },
     {
       date: "7/29",
       title: "伏見稻荷・奈良・大阪",
       highlights: [
-        "伏見稻荷大社",
-        "近鐵奈良站",
-        "奈良公園",
-        "東大寺",
-        "春日大社",
-        "奈良町",
-        "中谷堂 麻糬",
-        "麵鬪庵 午餐",
-        "志津香 釜飯",
-        "大阪難波站",
-        "飯店入住",
-        "道頓堀/心齋橋",
+        "【移動】京都 → 伏見稻荷（寄放行李）",
+        "伏見稻荷大社 (千本鳥居)",
+        "【移動】伏見稻荷 → 奈良（寄放行李）",
+        "奈良公園 (餵鹿) + 東大寺",
+        "午餐：奈良志津香釜飯 (公園店) 或 烏龍麵",
+        "【移動】奈良 → 大阪難波",
+        "Hotel Boti Boti",
+        "Check-in導航直接搜Hotel Boti Boti",
+        "晚餐 & 逛街：道頓堀 / 心齋橋",
+        "導航回飯店",
       ],
     },
     {
@@ -450,7 +497,8 @@ const tripData = {
         "小小兵樂園",
         "超級任天堂世界",
         "City Walk 晚餐",
-        "飯店休息",
+        "晚餐 & 離園：燒肉力丸 難波道頓堀店直接搜",
+        "導航回飯店",
       ],
     },
     {
@@ -463,6 +511,7 @@ const tripData = {
         "通天閣/新世界",
         "阿倍野HARUKAS 300展望台",
         "元祖串炸達摩 晚餐",
+        "金龍拉麵",
         "飯店休息",
       ],
     },
