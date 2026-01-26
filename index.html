@@ -38,24 +38,42 @@
                 <div class="card-header">
                     <h3><i class="fas fa-list-check"></i> 行前代辦事項</h3>
                 </div>
-                <ul class="todo-list">
-                    <li><input type="checkbox"> 機票（ez網-my way卡）：7/27 桃園出發、8/1 關西回程</li>
-                    <li><input type="checkbox"> 住宿(agoda/booking用my way 卡)：京都 (2晚)：京都站南 M's Est；大阪 (3晚)： Hotel Boti Boti</li>
-                    <li><input type="checkbox"> JR HARUKA 車票 (去程單程：KIX→京都)（LinePay/Klook）</li>
-                    <li><input type="checkbox"> USJ 門票 (Day 4 用，記得存入 USJ App)（LinePay/Klook）</li>
-                    <li><input type="checkbox"> 阿倍野 Harukas 300 門票（LinePay/Klook）</li>
-                    <li><input type="checkbox"> 交通卡：手機綁 Suica，並先儲值好 ¥5000</li>
-                    <li><input type="checkbox"> eSIM 可以不同家</li>
-                    <li><input type="checkbox"> 保險（出發前一個月）</li>
-                    <li><input type="checkbox"> 大行李箱*2、背包、小包</li>
-                    <li><input type="checkbox"> 換匯</li>
-                    <li><input type="checkbox"> 辦護照</li>
-                    <li><input type="checkbox"> 役男出境申請</li>
-                    <li><input type="checkbox"> Visit Japan Web 申請QRCode</li>
-                    <li><input type="checkbox"> 預約和服店</li>
-                    <li><input type="checkbox"> 預約燒肉店</li>
+                <ul class="todo-list" id="todoList">
+                    <li><input type="checkbox" data-todo="flight"> 機票（ez網-my way卡）：7/27 桃園出發、8/1 關西回程</li>
+                    <li><input type="checkbox" data-todo="hotel"> 住宿(agoda/booking用my way 卡)：京都 (2晚)：京都站南 M's Est；大阪 (3晚)： Hotel Boti Boti</li>
+                    <li><input type="checkbox" data-todo="haruka"> JR HARUKA 車票 (去程單程：KIX→京都)（LinePay/Klook）</li>
+                    <li><input type="checkbox" data-todo="usj"> USJ 門票 (Day 4 用，記得存入 USJ App)（LinePay/Klook）</li>
+                    <li><input type="checkbox" data-todo="harukas"> 阿倍野 Harukas 300 門票（LinePay/Klook）</li>
+                    <li><input type="checkbox" data-todo="suica"> 交通卡：手機綁 Suica，並先儲值好 ¥5000</li>
+                    <li><input type="checkbox" data-todo="esim"> eSIM 可以不同家</li>
+                    <li><input type="checkbox" data-todo="insurance"> 保險（出發前一個月）</li>
+                    <li><input type="checkbox" data-todo="luggage"> 大行李箱*2、背包、小包</li>
+                    <li><input type="checkbox" data-todo="exchange"> 換匯</li>
+                    <li><input type="checkbox" data-todo="passport"> 辦護照</li>
+                    <li><input type="checkbox" data-todo="military"> 役男出境申請</li>
+                    <li><input type="checkbox" data-todo="vjw"> Visit Japan Web 申請QRCode</li>
+                    <li><input type="checkbox" data-todo="kimono"> 預約和服店</li>
+                    <li><input type="checkbox" data-todo="bbq"> 預約燒肉店</li>
                 </ul>
             </div>
+            <script>
+            // 行前代辦事項 localStorage 儲存與還原
+            (function() {
+                const todoKey = 'todoListChecked';
+                const todoList = document.getElementById('todoList');
+                if (!todoList) return;
+                let checked = JSON.parse(localStorage.getItem(todoKey) || '{}');
+                // 還原勾選
+                todoList.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                    const key = cb.dataset.todo;
+                    if (checked[key]) cb.checked = true;
+                    cb.addEventListener('change', function() {
+                        checked[key] = cb.checked;
+                        localStorage.setItem(todoKey, JSON.stringify(checked));
+                    });
+                });
+            })();
+            </script>
             <!-- 倒數卡片 -->
             <div class="countdown-card">
                 <div class="countdown-main">

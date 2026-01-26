@@ -6,7 +6,6 @@
     font-weight: 700;
     letter-spacing: 1px;
     box-shadow: 0 1px 4px rgba(0,123,167,0.10);
-}
 .line.haruka {
     padding: 4px 8px;
     border-radius: 4px;
@@ -1243,4 +1242,104 @@ body {
     .tools-grid { grid-template-columns: 1fr; }
     .link-grid { grid-template-columns: repeat(2, 1fr); }
     .diary-photos { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+    html, body {
+        font-size: 15px;
+    }
+    .main, .tab-page, .modal-content {
+        padding: 8px !important;
+    }
+    .bottom-nav {
+        font-size: 13px;
+        height: 54px;
+    }
+    .tab-page h2, .modal-content h2 {
+        font-size: 16px;
+    }
+    .timeline-item .tl-time {
+        min-width: 48px;
+        font-size: 13px;
+    }
+    .timeline-item .tl-content {
+        font-size: 14px;
+    }
+    .btn, .btn-map, .btn-map-sm, .btn-primary, .btn-ghost, .btn-danger {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+    .input, .textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+    .modal-content {
+        max-width: 98vw;
+    }
+    .checklist-category h4 {
+        font-size: 14px;
+    }
+    .checklist-item label {
+        font-size: 13px;
+    }
+    .share-card, .phrase-card, .japanese-card {
+        padding: 10px;
+    }
+    .share-card h3 {
+        font-size: 15px;
+    }
+    .share-days span {
+        font-size: 10px;
+        padding: 3px 7px;
+    }
+}
+
+@media (max-width: 600px) {
+    .main, .tab-page, .modal-content {
+        padding: 12px !important;
+    }
+    .timeline {
+        gap: 10px;
+    }
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .timeline-item .tl-time {
+        margin-bottom: 2px;
+    }
+    .timeline-item .tl-content {
+        margin-left: 0;
+    }
+    .bottom-nav {
+        height: 56px;
+    }
+    .modal-content {
+        max-width: 98vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .main, .tab-page, .modal-content {
+        padding: 16px !important;
+    }
+    .tools-grid, .link-grid, .diary-photos {
+        grid-template-columns: 1fr 1fr;
+    }
+    .quick-btns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .modal-content {
+        max-width: 95vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main, .tab-page, .modal-content {
+        padding: 20px !important;
+    }
+    .modal-content {
+        max-width: 90vw;
+    }
+}
 }

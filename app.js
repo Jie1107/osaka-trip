@@ -959,14 +959,14 @@ function initShare() {
 }
 
 function generateShareText() {
-  let text = `✈️ 大阪 6 日自由行\n`;
+  let text = `✈️ 京阪神 6 天自由行\n`;
   text += `📅 2026/7/27 - 8/1\n\n`;
-  text += `Day 1｜道頓堀・心齋橋\n`;
-  text += `Day 2｜大阪城・通天閣・梅田夜景\n`;
-  text += `Day 3｜京都：嵐山・清水寺・祇園\n`;
-  text += `Day 4｜環球影城 USJ\n`;
-  text += `Day 5｜黑門市場・日本橋・阿倍野\n`;
-  text += `Day 6｜臨空城 OUTLET・回程\n\n`;
+  text += `Day 1｜台灣→關西機場→京都\n`;
+  text += `Day 2｜嵐山・清水寺・祇園\n`;
+  text += `Day 3｜伏見稻荷・奈良・大阪\n`;
+  text += `Day 4｜USJ 環球影城全日\n`;
+  text += `Day 5｜大阪市區・阿倍野展望台\n`;
+  text += `Day 6｜臨空城OUTLET・回台灣\n\n`;
   text += `👫 學生情侶 | 🚫 不吃海鮮\n`;
   return text;
 }
@@ -989,7 +989,7 @@ function generateShareImage() {
   ctx.fillStyle = "white";
   ctx.font = "bold 48px Noto Sans TC, sans-serif";
   ctx.textAlign = "center";
-  ctx.fillText("大阪 6 日自由行", 400, 100);
+  ctx.fillText("京阪神 6 天自由行", 400, 100);
 
   // 日期
   ctx.font = "24px Noto Sans TC, sans-serif";
@@ -998,12 +998,12 @@ function generateShareImage() {
 
   // 行程列表
   const days = [
-    { day: "Day 1", title: "道頓堀・心齋橋" },
-    { day: "Day 2", title: "大阪城・通天閣・梅田" },
-    { day: "Day 3", title: "京都一日遊" },
-    { day: "Day 4", title: "環球影城 USJ" },
-    { day: "Day 5", title: "黑門市場・購物" },
-    { day: "Day 6", title: "OUTLET・回程" },
+    { day: "Day 1", title: "台灣→關西機場→京都" },
+    { day: "Day 2", title: "嵐山・清水寺・祇園" },
+    { day: "Day 3", title: "伏見稻荷・奈良・大阪" },
+    { day: "Day 4", title: "USJ 環球影城全日" },
+    { day: "Day 5", title: "大阪市區・阿倍野展望台" },
+    { day: "Day 6", title: "臨空城OUTLET・回台灣" },
   ];
 
   ctx.textAlign = "left";
@@ -1034,7 +1034,7 @@ function generateShareImage() {
 
   // 下載
   const link = document.createElement("a");
-  link.download = "大阪6日行程.png";
+  link.download = "京阪神6天行程.png";
   link.href = canvas.toDataURL("image/png");
   link.click();
 
