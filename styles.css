@@ -1,5 +1,4 @@
 /* ===== HARUKA 專屬色彩 ===== */
-/* ===== HARUKA 專屬色彩 ===== */
 .line.haruka, .trip-tag.haruka, .haruka-text {
     background: linear-gradient(90deg, #00b4d8 0%, #0077b6 100%);
     color: #fff !important;
@@ -1343,5 +1342,4 @@ body {
     .modal-content {
         max-width: 90vw;
     }
-}
 }
