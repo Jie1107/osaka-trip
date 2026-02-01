@@ -1072,8 +1072,38 @@ function initJapanese() {
   if (!container) return;
 
   let html = "";
-  japaneseData.forEach((item) => {
-    html += `
+  japaneseData.forEach((item, index) => {
+    const hasPlaceholder =
+      item.japanese.includes("〇〇") || item.japanese.includes("〇");
+
+    if (hasPlaceholder) {
+      // 可編輯的卡片
+      html += `
+            <div class="japanese-card editable-card" data-index="${index}">
+                <div class="situation">${item.situation}</div>
+                <div class="japanese-editable">
+                    <input type="text" class="japanese-input" 
+                           value="${item.japanese}" 
+                           data-original="${item.japanese}"
+                           placeholder="${item.japanese}">
+                    <button class="reset-btn" title="重置"><i class="fas fa-rotate-left"></i></button>
+                </div>
+                <div class="romaji">${item.romaji}</div>
+                <div class="meaning">${item.meaning}</div>
+                <div class="edit-hint"><i class="fas fa-edit"></i> 點擊編輯〇〇後再播放</div>
+                <div class="card-btns">
+                    <button class="speak-btn" data-index="${index}">
+                        <i class="fas fa-volume-high"></i> 播放
+                    </button>
+                    <button class="copy-btn" data-index="${index}">
+                        <i class="fas fa-copy"></i> 複製
+                    </button>
+                </div>
+            </div>
+        `;
+    } else {
+      // 一般卡片
+      html += `
             <div class="japanese-card">
                 <div class="situation">${item.situation}</div>
                 <div class="japanese">${item.japanese}</div>
@@ -1089,9 +1119,39 @@ function initJapanese() {
                 </div>
             </div>
         `;
+    }
   });
 
   container.innerHTML = html;
+
+  // 綁定可編輯卡片的事件
+  container.querySelectorAll(".editable-card").forEach((card) => {
+    const input = card.querySelector(".japanese-input");
+    const resetBtn = card.querySelector(".reset-btn");
+    const speakBtn = card.querySelector(".speak-btn");
+    const copyBtn = card.querySelector(".copy-btn");
+
+    // 重置按鈕
+    resetBtn.addEventListener("click", () => {
+      input.value = input.dataset.original;
+    });
+
+    // 播放按鈕 - 使用編輯後的文字
+    speakBtn.addEventListener("click", () => {
+      const text = input.value.trim();
+      if (text) {
+        speakJapanese(text);
+      }
+    });
+
+    // 複製按鈕 - 使用編輯後的文字
+    copyBtn.addEventListener("click", () => {
+      const text = input.value.trim();
+      if (text) {
+        copyText(text);
+      }
+    });
+  });
 }
 
 // ===== 常用溝通卡 Modal =====
