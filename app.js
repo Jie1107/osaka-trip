@@ -1071,26 +1071,82 @@ function initJapanese() {
   const container = document.getElementById("japaneseCards");
   if (!container) return;
 
+  // 常用詞彙對照表（中文 → 日文）
+  const commonWords = {
+    車站: "駅",
+    廁所: "トイレ",
+    便利店: "コンビニ",
+    藥局: "薬局",
+    飯店: "レストラン",
+    飯館: "レストラン",
+    "飯店/飯館": "レストラン",
+    放題店: "レストラン",
+    酒店: "ホテル",
+    旅館: "ホテル",
+    機場: "空港",
+    地鐵: "地下鉄",
+    出口: "出口",
+    入口: "入口",
+    電梯: "エレベーター",
+    手扶梯: "エスカレーター",
+    超市: "スーパー",
+    郵局: "郵便局",
+    銀行: "銀行",
+    ATM: "ATM",
+    醫院: "病院",
+    警察局: "警察",
+    公園: "公園",
+    神社: "神社",
+    寺廟: "お寺",
+    城堡: "お城",
+    大阪城: "大阪城",
+    一: "一",
+    二: "二",
+    三: "三",
+    四: "四",
+    五: "五",
+    1: "一",
+    2: "二",
+    3: "三",
+    4: "四",
+    5: "五",
+    6: "六",
+    7: "七",
+    8: "八",
+    9: "九",
+    10: "十",
+  };
+
   let html = "";
   japaneseData.forEach((item, index) => {
     const hasPlaceholder =
       item.japanese.includes("〇〇") || item.japanese.includes("〇");
 
     if (hasPlaceholder) {
-      // 可編輯的卡片
+      // 可編輯的卡片 - 輸入中文
+      const placeholder = item.japanese.includes("〇〇") ? "〇〇" : "〇";
+      const isNumber = item.meaning.includes("個"); // 數量用
+
       html += `
-            <div class="japanese-card editable-card" data-index="${index}">
+            <div class="japanese-card editable-card" data-index="${index}" data-template="${item.japanese}" data-placeholder="${placeholder}">
                 <div class="situation">${item.situation}</div>
-                <div class="japanese-editable">
-                    <input type="text" class="japanese-input" 
-                           value="${item.japanese}" 
-                           data-original="${item.japanese}"
-                           placeholder="${item.japanese}">
-                    <button class="reset-btn" title="重置"><i class="fas fa-rotate-left"></i></button>
-                </div>
+                <div class="japanese" id="japanese-${index}">${item.japanese}</div>
                 <div class="romaji">${item.romaji}</div>
                 <div class="meaning">${item.meaning}</div>
-                <div class="edit-hint"><i class="fas fa-edit"></i> 點擊編輯〇〇後再播放</div>
+                <div class="edit-section">
+                    <div class="edit-label"><i class="fas fa-edit"></i> 輸入${isNumber ? "數量" : "中文"}替換 ${placeholder}：</div>
+                    <div class="edit-input-row">
+                        <input type="text" class="edit-input" 
+                               id="edit-${index}"
+                               placeholder="${isNumber ? "例如：2" : "例如：車站、廁所"}">
+                        <button class="convert-btn" data-index="${index}">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="converted-result" id="result-${index}" style="display:none;">
+                        <span class="result-text"></span>
+                    </div>
+                </div>
                 <div class="card-btns">
                     <button class="speak-btn" data-index="${index}">
                         <i class="fas fa-volume-high"></i> 播放
@@ -1126,30 +1182,74 @@ function initJapanese() {
 
   // 綁定可編輯卡片的事件
   container.querySelectorAll(".editable-card").forEach((card) => {
-    const input = card.querySelector(".japanese-input");
-    const resetBtn = card.querySelector(".reset-btn");
+    const index = card.dataset.index;
+    const template = card.dataset.template;
+    const placeholder = card.dataset.placeholder;
+    const input = card.querySelector(".edit-input");
+    const convertBtn = card.querySelector(".convert-btn");
+    const japaneseDiv = card.querySelector(".japanese");
+    const resultDiv = card.querySelector(".converted-result");
+    const resultText = resultDiv.querySelector(".result-text");
     const speakBtn = card.querySelector(".speak-btn");
     const copyBtn = card.querySelector(".copy-btn");
 
-    // 重置按鈕
-    resetBtn.addEventListener("click", () => {
-      input.value = input.dataset.original;
+    let currentJapanese = template;
+
+    // 轉換按鈕
+    convertBtn.addEventListener("click", async () => {
+      const chineseInput = input.value.trim();
+      if (!chineseInput) {
+        showToast("請輸入內容");
+        return;
+      }
+
+      // 先查常用詞彙表
+      let japaneseWord = commonWords[chineseInput];
+
+      if (!japaneseWord) {
+        // 使用翻譯 API
+        try {
+          const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-TW&tl=ja&dt=t&q=${encodeURIComponent(chineseInput)}`;
+          const response = await fetch(url);
+          const data = await response.json();
+          if (data && data[0] && data[0][0]) {
+            japaneseWord = data[0][0][0];
+          }
+        } catch (e) {
+          showToast("翻譯失敗");
+          return;
+        }
+      }
+
+      if (japaneseWord) {
+        // 替換占位符
+        currentJapanese = template.replace(placeholder, japaneseWord);
+        japaneseDiv.textContent = currentJapanese;
+        japaneseDiv.classList.add("highlight");
+        resultDiv.style.display = "flex";
+        resultText.textContent = `${placeholder} → ${japaneseWord}`;
+
+        setTimeout(() => {
+          japaneseDiv.classList.remove("highlight");
+        }, 1000);
+      }
     });
 
-    // 播放按鈕 - 使用編輯後的文字
+    // Enter 鍵觸發轉換
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        convertBtn.click();
+      }
+    });
+
+    // 播放按鈕
     speakBtn.addEventListener("click", () => {
-      const text = input.value.trim();
-      if (text) {
-        speakJapanese(text);
-      }
+      speakJapanese(currentJapanese);
     });
 
-    // 複製按鈕 - 使用編輯後的文字
+    // 複製按鈕
     copyBtn.addEventListener("click", () => {
-      const text = input.value.trim();
-      if (text) {
-        copyText(text);
-      }
+      copyText(currentJapanese);
     });
   });
 }
