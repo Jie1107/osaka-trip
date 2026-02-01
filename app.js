@@ -4,7 +4,7 @@
 let shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let checkedItems = JSON.parse(localStorage.getItem("checkedItems")) || [];
-let exchangeRate = 0.21; // 預設匯率 1 JPY ≈ 0.21 TWD
+let exchangeRate = 0.204; // 預設匯率 1 JPY ≈ 0.204 TWD
 
 // ===== 語音朗讀 (TTS) =====
 function speakJapanese(text) {
