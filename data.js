@@ -193,10 +193,15 @@ const locations = {
     hours: "Check-in 16:00",
   },
   // 大阪飯店
-  "Hotel Boti Boti": {
-    name: "Hotel Boti Boti",
-    nameJp: "Hotel Boti Boti",
-    hours: "Check-in 16:00",
+  "HOTEL SOBIAL": {
+    name: "HOTEL SOBIAL なんば大国町",
+    nameJp: "ホテルソビアル なんば大国町",
+    hours: "Check-in 15:00",
+  },
+  ホテルソビアル: {
+    name: "HOTEL SOBIAL なんば大国町",
+    nameJp: "ホテルソビアル なんば大国町",
+    hours: "Check-in 15:00",
   },
   // 先斗町
   Kashiwayacho: {
@@ -215,6 +220,17 @@ const locations = {
     name: "炸牛排 京都勝牛 京都站前店",
     nameJp: "京都勝牛 京都駅前店",
     hours: "11:00-22:00",
+  },
+  // 燒肉力丸 難波湊町店
+  烤肉力丸難波湊町店: {
+    name: "烤肉力丸 難波湊町店",
+    nameJp: "焼肉力丸 なんば湊町店",
+    hours: "17:00-23:00",
+  },
+  焼肉力丸: {
+    name: "烤肉力丸 難波湊町店",
+    nameJp: "焼肉力丸 なんば湊町店",
+    hours: "17:00-23:00",
   },
   // 燒肉力丸 難波道頓堀店
   "燒肉力丸 難波道頓堀店": {
@@ -316,8 +332,48 @@ const locations = {
     nameJp: "嵐山 竹林の小径",
     hours: "24H（建議 9:00 前）",
   },
+  嵐山竹林: {
+    name: "嵐山竹林小徑",
+    nameJp: "嵐山 竹林の小径",
+    hours: "24H（建議 9:00 前）",
+  },
   渡月橋: { name: "渡月橋", nameJp: "渡月橋", hours: "24H" },
   天龍寺: { name: "天龍寺", nameJp: "天龍寺", hours: "8:30-17:00（¥500）" },
+  廣川鰻魚飯: {
+    name: "廣川鰻魚飯",
+    nameJp: "うなぎ屋 廣川",
+    hours: "11:30-14:30, 17:00-20:00",
+  },
+  京都車站: {
+    name: "京都車站",
+    nameJp: "京都駅",
+    hours: "24H",
+  },
+  鴨川: {
+    name: "鴨川",
+    nameJp: "鴨川",
+    hours: "24H",
+  },
+  先斗町: {
+    name: "先斗町",
+    nameJp: "先斗町",
+    hours: "17:00-24:00",
+  },
+  京都勝牛: {
+    name: "京都勝牛",
+    nameJp: "京都勝牛 京都駅前店",
+    hours: "11:00-22:00",
+  },
+  河原町: {
+    name: "河原町",
+    nameJp: "河原町",
+    hours: "10:00-21:00",
+  },
+  JR奈良站: {
+    name: "JR奈良站",
+    nameJp: "JR奈良駅",
+    hours: "首班 5:30",
+  },
   金閣寺: { name: "金閣寺", nameJp: "金閣寺", hours: "9:00-17:00（¥500）" },
   伏見稻荷大社: {
     name: "伏見稻荷大社",
@@ -416,6 +472,21 @@ const locations = {
   奈良町: { name: "奈良町", nameJp: "ならまち", hours: "店家約 10:00-18:00" },
   近鐵奈良站: { name: "近鐵奈良站", nameJp: "近鉄奈良駅", hours: "首班 5:30" },
   大阪難波站: { name: "大阪難波站", nameJp: "大阪難波駅", hours: "首班 5:00" },
+  JR難波站: { name: "JR 難波站", nameJp: "JR難波駅", hours: "首班 5:30" },
+  南海難波駅: { name: "南海難波站", nameJp: "南海難波駅", hours: "首班 5:00" },
+  近鐵難波駅: {
+    name: "近鐵難波站",
+    nameJp: "近鉄大阪難波駅",
+    hours: "首班 5:30",
+  },
+  阪神難波駅: { name: "阪神難波站", nameJp: "阪神難波駅", hours: "首班 5:30" },
+  關西國際機場站: { name: "關西機場站", nameJp: "関西空港駅", hours: "24H" },
+  關西機場站: { name: "關西機場站", nameJp: "関西空港駅", hours: "24H" },
+  關西國際空港駅: {
+    name: "關西機場站",
+    nameJp: "関西國際空港駅",
+    hours: "24H",
+  },
   中谷堂: { name: "中谷堂", nameJp: "中谷堂", hours: "10:00-19:00" },
   麵鬪庵: {
     name: "麵鬪庵",
@@ -497,8 +568,8 @@ const tripData = {
         "奈良公園 (餵鹿) + 東大寺",
         "午餐：奈良志津香釜飯 (公園店) 或 烏龍麵",
         "【移動】奈良 → 大阪難波",
-        "Hotel Boti Boti",
-        "Check-in導航直接搜Hotel Boti Boti",
+        "HOTEL SOBIAL なんば大国町",
+        "Check-in導航直接搜HOTEL SOBIAL なんば大国町",
         "晚餐 & 逛街：道頓堀 / 心齋橋",
         "導航回飯店",
       ],
@@ -527,9 +598,8 @@ const tripData = {
         "大阪城公園/天守閣",
         "通天閣/新世界",
         "阿倍野HARUKAS 300展望台",
-        "元祖串炸達摩 晚餐",
-        "金龍拉麵",
-        "飯店休息",
+        "晚餐：烤肉力丸 難波湊町店",
+        "導航回飯店",
       ],
     },
     {

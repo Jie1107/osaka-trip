@@ -618,6 +618,24 @@ body {
 }
 
 .check-list { list-style: none; padding: 0; }
+.todo-list { list-style: none; padding: 0; margin: 0; }
+.todo-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    line-height: 1.5;
+}
+.todo-list li:last-child { border-bottom: none; }
+.todo-list li input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: var(--accent);
+}
 .check-list li {
     display: flex;
     align-items: center;
@@ -701,6 +719,32 @@ body {
     margin-bottom: 10px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    position: relative;
+}
+
+.timeline-item .btn-edit {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    opacity: 0.6;
+    transition: all 0.2s;
+}
+
+.timeline-item .btn-edit:hover {
+    opacity: 1;
+    background: var(--primary);
+    color: white;
 }
 
 .timeline-item.highlight { border-left: 3px solid var(--primary); }
@@ -1026,6 +1070,26 @@ body {
 .transit-row .line.kintetsu { background: rgba(255,102,0,0.15); color: #ff6600; }
 .transit-row .line.metro { background: rgba(230,0,18,0.15); color: #e60012; }
 .transit-row .line.hanshin { background: rgba(244,180,0,0.15); color: #b38600; }
+
+/* ===== Edit Form ===== */
+.edit-form { display: flex; flex-direction: column; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+.textarea {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 80px;
+}
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
 
 /* ===== Currency ===== */
 .currency-box {

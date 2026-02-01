@@ -40,7 +40,7 @@
                 </div>
                 <ul class="todo-list" id="todoList">
                     <li><input type="checkbox" data-todo="flight"> 機票（ez網-my way卡）：7/27 桃園出發、8/1 關西回程</li>
-                    <li><input type="checkbox" data-todo="hotel"> 住宿(agoda/booking用my way 卡)：京都 (2晚)：京都站南 M's Est；大阪 (3晚)： Hotel Boti Boti</li>
+                    <li><input type="checkbox" data-todo="hotel"> 住宿(agoda/booking用my way 卡)：京都 (2晚)：京都站南 M's Est；大阪 (3晚)：HOTEL SOBIAL なんば大国町</li>
                     <li><input type="checkbox" data-todo="haruka"> JR HARUKA 車票 (去程單程：KIX→京都)（LinePay/Klook）</li>
                     <li><input type="checkbox" data-todo="usj"> USJ 門票 (Day 4 用，記得存入 USJ App)（LinePay/Klook）</li>
                     <li><input type="checkbox" data-todo="harukas"> 阿倍野 Harukas 300 門票（LinePay/Klook）</li>
@@ -99,8 +99,8 @@
                     <button class="icon-btn" id="editHotelBtn"><i class="fas fa-pen"></i></button>
                 </div>
                 <div id="hotelDisplay">
-                    <p class="hotel-name" id="hotelNameDisplay">京都2晚：Hotel M's Est Kyoto Station South（Agoda/Booking，my way卡）<br>大阪3晚：Hotel Boti Boti (難波)（Agoda/Booking，my way卡）</p>
-                    <p class="hotel-address" id="hotelAddressDisplay">京都：601-8002 京都府京都市南区東九条上殿田町４８−１<br>大阪：大阪市中央區難波3-8-17</p>
+                    <p class="hotel-name" id="hotelNameDisplay">京都2晚：Hotel M's Est Kyoto Station South（Agoda/Booking，my way卡）<br>大阪3晚：HOTEL SOBIAL なんば大国町（Agoda/Booking，my way卡）</p>
+                    <p class="hotel-address" id="hotelAddressDisplay">京都：601-8002 京都府京都市南区東九条上殿田町４８－１<br>大阪：大阪市浪速区大国1-1-3</p>
                     <button class="btn-map" id="hotelMapBtn" style="display:none;">
                         <i class="fas fa-location-dot"></i> 導航
                     </button>
@@ -289,9 +289,154 @@
             <!-- 機場攻略 -->
             <div class="sub-page" id="subtab-airport">
                 <div class="accordion-list">
+                    <!-- 出發前 48 小時 -->
                     <div class="accordion open">
                         <div class="accordion-header">
-                            <span>去程：桃園 → 關西機場</span>
+                            <span>✈️ 出發前 48 小時：線上報到搶位</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="tip-box success" style="margin-bottom: 16px;">
+                                <strong>💡 提早選位 = 好位置！</strong><br>
+                                起飛前 48 小時開放線上報到，趕快搶靠窗或靠走道！
+                            </div>
+                            <div class="airport-flow">
+                                <div class="flow-step">
+                                    <div class="flow-time">Step 1</div>
+                                    <div class="flow-content">
+                                        <strong>下載 Cathay Pacific App</strong>
+                                        <p>手機下載「國泰航空」官方 App</p>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-time">Step 2</div>
+                                    <div class="flow-content">
+                                        <strong>網上報到 (Online Check-in)</strong>
+                                        <p>打開 App → 點選「報到」</p>
+                                        <p>輸入「英文姓氏」與「預訂參考編號」（6碼英數）</p>
+                                    </div>
+                                </div>
+                                <div class="flow-step highlight">
+                                    <div class="flow-time">Step 3</div>
+                                    <div class="flow-content">
+                                        <strong>選擇座位</strong>
+                                        <p>進入後會看到飛機座位圖</p>
+                                        <div class="seat-options" style="display: flex; gap: 12px; margin-top: 8px;">
+                                            <div class="seat-option" style="flex: 1; padding: 12px; background: var(--bg-tertiary); border-radius: 8px; text-align: center;">
+                                                <i class="fas fa-cloud" style="font-size: 24px; color: #64b5f6;"></i>
+                                                <p style="margin: 8px 0 4px; font-weight: 600;">靠窗 Window</p>
+                                                <p style="font-size: 12px; color: var(--text-secondary);">看風景、睡覺不被打擾</p>
+                                            </div>
+                                            <div class="seat-option" style="flex: 1; padding: 12px; background: var(--bg-tertiary); border-radius: 8px; text-align: center;">
+                                                <i class="fas fa-person-walking" style="font-size: 24px; color: #81c784;"></i>
+                                                <p style="margin: 8px 0 4px; font-weight: 600;">靠走道 Aisle</p>
+                                                <p style="font-size: 12px; color: var(--text-secondary);">進出廁所方便</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-time">Step 4</div>
+                                    <div class="flow-content">
+                                        <strong>儲存登機證</strong>
+                                        <p>完成後將 QR Code 登機證存入 Apple Wallet / Google Pay</p>
+                                        <div class="tip-box warning">截圖保存！機場網路可能不穩</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 去程完整流程 -->
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            <span>🚄 交通轉乘：高鐵桃園站 → 機場</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="airport-flow">
+                                <div class="flow-step">
+                                    <div class="flow-time">06:00</div>
+                                    <div class="flow-content">
+                                        <strong>高鐵桃園站下車</strong>
+                                        <p>跟著「機場捷運」或「出口 6」指標走</p>
+                                        <p class="floor-info"><i class="fas fa-layer-group"></i> 往 A18 高鐵桃園站</p>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-time">06:10</div>
+                                    <div class="flow-content">
+                                        <strong>搭乘機場捷運</strong>
+                                        <p>刷悠遊卡進站，搭乘往「台北」方向列車</p>
+                                        <div class="tip-box danger" style="margin-top: 8px;">
+                                            <strong>⚠️ 國泰航空在第一航廈！</strong><br>
+                                            請在 <b>A12 第一航廈站</b> 下車（不要坐到 A13 第二航廈）
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flow-step highlight">
+                                    <div class="flow-time">06:25</div>
+                                    <div class="flow-content">
+                                        <strong>抵達第一航廈</strong>
+                                        <p>下車後搭電扶梯向上</p>
+                                        <p class="floor-info"><i class="fas fa-layer-group"></i> 跟著「出境大廳 3F Departure」走</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            <span>📋 機場報到與託運（第一航廈 3F）</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="airport-flow">
+                                <div class="flow-step">
+                                    <div class="flow-time">06:30</div>
+                                    <div class="flow-content">
+                                        <strong>找國泰航空櫃檯</strong>
+                                        <p>看大螢幕找「Cathay Pacific」櫃檯編號（通常 2 或 3 號）</p>
+                                        <p class="floor-info"><i class="fas fa-layer-group"></i> 第一航廈 3F 出境大廳</p>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-time">06:35</div>
+                                    <div class="flow-content">
+                                        <strong>辦理報到 (Check-in)</strong>
+                                        <div class="detail-expand" data-detail="checkin-detail">
+                                            <span>詳細流程</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                        <div class="detail-content" id="checkin-detail">
+                                            <p style="margin-bottom: 8px;"><b>已線上報到：</b>直接去託運行李</p>
+                                            <p style="margin-bottom: 8px;"><b>沒有線上報到：</b></p>
+                                            <ol>
+                                                <li>找國泰「自助報到機 (Kiosk)」</li>
+                                                <li>掃描護照並按螢幕指示選位</li>
+                                                <li>機器會印出紙本登機證</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-time">06:45</div>
+                                    <div class="flow-content">
+                                        <strong>託運行李 (Bag Drop)</strong>
+                                        <p>排隊把行李放上傳送帶，拿行李收據</p>
+                                        <div class="tip-box warning" style="margin-top: 8px;">
+                                            <strong>重要！</strong>託運完先別走，看小螢幕確認行李通過 X 光沒被攔下
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            <span>🔒 安檢與出境</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="accordion-body">
@@ -299,76 +444,133 @@
                                 <div class="flow-step">
                                     <div class="flow-time">07:00</div>
                                     <div class="flow-content">
-                                        <strong>抵達桃園機場</strong>
-                                        <p>第一航廈或第二航廈（看航空公司）</p>
-                                        <p class="floor-info"><i class="fas fa-layer-group"></i> 出境大廳 3F</p>
-                                    </div>
-                                </div>
-                                <div class="flow-step">
-                                    <div class="flow-time">07:15</div>
-                                    <div class="flow-content">
-                                        <strong>航空公司櫃台報到</strong>
-                                        <p>出示護照 → 託運行李 → 拿登機證</p>
-                                        <div class="detail-expand" data-detail="checkin-detail">
-                                            <span>詳細流程</span>
-                                            <i class="fas fa-chevron-down"></i>
-                                        </div>
-                                        <div class="detail-content" id="checkin-detail">
-                                            <ol>
-                                                <li>找到航空公司櫃台（看大螢幕）</li>
-                                                <li>排隊等候叫號</li>
-                                                <li>出示護照給地勤</li>
-                                                <li>把大行李放上磅秤（23kg 限制）</li>
-                                                <li>確認目的地標籤貼對</li>
-                                                <li>拿登機證＋行李收據</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flow-step">
-                                    <div class="flow-time">07:45</div>
-                                    <div class="flow-content">
                                         <strong>安全檢查</strong>
-                                        <p>行動電源拿出來、脫外套皮帶</p>
+                                        <p>準備好護照與登機證</p>
                                         <div class="detail-expand" data-detail="security-detail">
                                             <span>詳細流程</span>
                                             <i class="fas fa-chevron-down"></i>
                                         </div>
                                         <div class="detail-content" id="security-detail">
                                             <ol>
-                                                <li>把隨身行李放上輸送帶</li>
-                                                <li>筆電、平板拿出來單獨過</li>
+                                                <li>外套、皮帶、手機、口袋雜物放籃子</li>
+                                                <li>筆電/平板單獨過 X 光</li>
                                                 <li>行動電源拿出來</li>
-                                                <li>液體袋（夾鏈袋）拿出來</li>
-                                                <li>脫外套、皮帶、手錶</li>
+                                                <li>液體袋（透明夾鏈袋）拿出來</li>
+                                                <li>水壺的水要倒掉（空瓶可帶進去）</li>
                                                 <li>走過金屬探測門</li>
-                                                <li>可能被要求脫鞋</li>
                                             </ol>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flow-step">
-                                    <div class="flow-time">08:00</div>
+                                <div class="flow-step highlight">
+                                    <div class="flow-time">07:15</div>
                                     <div class="flow-content">
                                         <strong>證照查驗（出境）</strong>
-                                        <p>護照給海關蓋章</p>
-                                        <div class="tip-box info">有自動通關的話更快！</div>
+                                        <p>自動通關 e-Gate：掃護照 → 臉部辨識 → 10 秒過關</p>
+                                        <div class="tip-box success">台灣人年滿 10 歲可用自動通關！</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            <span>🛍️ 禁區內等候（候機）</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="tip-box info" style="margin-bottom: 16px;">
+                                過完海關就進入禁區，不能回頭，只能往登機門走
+                            </div>
+                            <div class="airport-flow">
+                                <div class="flow-step">
+                                    <div class="flow-time">07:20</div>
+                                    <div class="flow-content">
+                                        <strong>確認登機門</strong>
+                                        <p>看登機證上的 Gate 號碼（例如 B5）</p>
                                     </div>
                                 </div>
                                 <div class="flow-step">
-                                    <div class="flow-time">08:15</div>
+                                    <div class="flow-time">07:30</div>
                                     <div class="flow-content">
-                                        <strong>前往登機門</strong>
-                                        <p>看登機證上的 Gate 號碼</p>
+                                        <strong>沒貴賓室也能好好等</strong>
+                                        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <i class="fas fa-store" style="width: 20px; color: #ff9800;"></i>
+                                                <span><b>免稅店：</b>精品、化妝品、伴手禮</span>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <i class="fas fa-couch" style="width: 20px; color: #9c27b0;"></i>
+                                                <span><b>免費休息區：</b>沙發區、隱藏版免費按摩椅（免稅店索取代幣）</span>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <i class="fas fa-utensils" style="width: 20px; color: #4caf50;"></i>
+                                                <span><b>美食街：</b>3F、4F 有餐廳咖啡廳</span>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <i class="fas fa-droplet" style="width: 20px; color: #2196f3;"></i>
+                                                <span><b>飲水機：</b>到處都有，可裝滿空瓶</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="flow-step highlight">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            <span>🛫 登機</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="airport-flow">
+                                <div class="flow-step">
                                     <div class="flow-time">09:00</div>
-                                    <div class="flow-content"><strong>開始登機</strong><p>提前 30 分鐘開始</p></div>
+                                    <div class="flow-content">
+                                        <strong>抵達登機門</strong>
+                                        <p>請至少在起飛前 40 分鐘到登機門旁等候</p>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-time">09:00</div>
+                                    <div class="flow-content">
+                                        <strong>聽廣播分組登機</strong>
+                                        <p>登機證上有 Group 1, 2, 3...，經濟艙通常是 Group 3 或 4</p>
+                                        <div class="tip-box info">聽到叫你的組別再去排隊</div>
+                                    </div>
                                 </div>
                                 <div class="flow-step highlight">
                                     <div class="flow-time">09:30</div>
-                                    <div class="flow-content"><strong>起飛</strong></div>
+                                    <div class="flow-content">
+                                        <strong>登機起飛！</strong>
+                                        <p>出示護照與登機證 → 走過空橋 → 開始旅程！</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 給第一次搭機的保命符 -->
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            <span>💡 第一次搭機必看 3 個保命符</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <div style="display: flex; flex-direction: column; gap: 16px;">
+                                <div class="tip-box warning">
+                                    <strong>⏰ 時間</strong><br>
+                                    高鐵抵達桃園站的時間，設定在飛機<b>起飛前 3.5 小時</b>最安全
+                                </div>
+                                <div class="tip-box danger">
+                                    <strong>💧 液體</strong><br>
+                                    隨身包的乳液、噴霧不能超過 <b>100ml</b>，且要全部裝在一個透明夾鏈袋
+                                </div>
+                                <div class="tip-box success">
+                                    <strong>🔋 充電</strong><br>
+                                    候機室椅子通常有 USB 充電孔，上飛機前可以先充飽電
                                 </div>
                             </div>
                         </div>
@@ -527,52 +729,60 @@
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="accordion-body">
+                            <div class="tip-box info" style="margin-bottom: 16px;">
+                                <strong>難波站是 5 條鐵路的交會點</strong><br>
+                                各路線入口分散，認清顏色招牌很重要！
+                            </div>
                             <div class="station-lines">
-                                                                <div class="line-item jr">
-                                                                    <div class="line-badge haruka">HARUKA</div>
-                                                                    <div class="line-info">
-                                                                        <strong class="haruka-text">JR 關西機場線（HARUKA）</strong>
-                                                                        <p>往京都、天王寺、新大阪</p>
-                                                                        <p class="line-hint haruka-text">找綠色「JR」標誌，<span class="haruka-text">特急 HARUKA</span> 直達京都</p>
-                                                                    </div>
-                                                                    <button class="btn-map-sm" data-place="関西国際空港駅"><i class="fas fa-location-dot"></i></button>
-                                                                </div>
                                 <div class="line-item nankai">
-                                    <div class="line-badge">南海</div>
+                                    <div class="line-badge nankai">南海</div>
                                     <div class="line-info">
                                         <strong>南海電鐵</strong>
-                                        <p>往關西機場、臨空城</p>
-                                        <p class="line-hint">找藍色「南海」招牌</p>
+                                        <p>往關西機場、臨空城 Outlet</p>
+                                        <p class="line-hint">找藍色「南海」招牌・難波站 3F</p>
                                     </div>
                                     <button class="btn-map-sm" data-place="南海難波駅"><i class="fas fa-location-dot"></i></button>
                                 </div>
                                 <div class="line-item kintetsu">
-                                    <div class="line-badge">近鐵</div>
+                                    <div class="line-badge kintetsu">近鐵</div>
                                     <div class="line-info">
                                         <strong>近鐵電車</strong>
-                                        <p>往奈良（直達）</p>
-                                        <p class="line-hint">找橘色「近鉄」招牌</p>
+                                        <p>往奈良（快速急行直達 40 分）</p>
+                                        <p class="line-hint">找橘色「近鉄」招牌・B1F</p>
                                     </div>
                                     <button class="btn-map-sm" data-place="近鉄難波駅"><i class="fas fa-location-dot"></i></button>
                                 </div>
                                 <div class="line-item metro">
-                                    <div class="line-badge">M</div>
+                                    <div class="line-badge metro">M</div>
                                     <div class="line-info">
-                                        <strong>大阪 Metro</strong>
-                                        <p>市區移動（御堂筋線等）</p>
-                                        <p class="line-hint">找紅色「M」標誌</p>
+                                        <strong>大阪 Metro 御堂筋線</strong>
+                                        <p>往梅田、天王寺、新大阪</p>
+                                        <p class="line-hint">找紅色「M」標誌・B1F-B2F</p>
                                     </div>
                                     <button class="btn-map-sm" data-place="なんば駅 大阪メトロ"><i class="fas fa-location-dot"></i></button>
                                 </div>
                                 <div class="line-item hanshin">
-                                    <div class="line-badge">阪神</div>
+                                    <div class="line-badge hanshin">阪神</div>
                                     <div class="line-info">
                                         <strong>阪神電車</strong>
-                                        <p>往 USJ（轉 JR）</p>
-                                        <p class="line-hint">找黃色「阪神」招牌</p>
+                                        <p>往 USJ（西九條轉 JR）、神戶</p>
+                                        <p class="line-hint">找黃色「阪神」招牌・B1F</p>
                                     </div>
                                     <button class="btn-map-sm" data-place="阪神難波駅"><i class="fas fa-location-dot"></i></button>
                                 </div>
+                                <div class="line-item jr">
+                                    <div class="line-badge jr">JR</div>
+                                    <div class="line-info">
+                                        <strong>JR 難波站</strong>
+                                        <p>往奈良（大和路線）</p>
+                                        <p class="line-hint">找綠色「JR」標誌・較遠需步行 5-10 分</p>
+                                    </div>
+                                    <button class="btn-map-sm" data-place="JR難波駅"><i class="fas fa-location-dot"></i></button>
+                                </div>
+                            </div>
+                            <div class="tip-box warning" style="margin-top: 16px;">
+                                <strong>⚠️ HARUKA 不停難波站！</strong><br>
+                                從難波去京都要搭御堂筋線到新大阪，再轉 HARUKA 或新幹線
                             </div>
                         </div>
                     </div>
@@ -684,7 +894,7 @@
                     <div class="timeline-item"><div class="tl-time">11:30</div><div class="tl-content"><strong>午餐：奈良志津香釜飯 (公園店)</strong><p>名物釜飯，建議 11:00 前到排隊</p><button class="btn-map" data-place="志津香"><i class="fas fa-location-dot"></i> MAP</button></div></div>
                     <div class="timeline-item"><div class="tl-time">13:00</div><div class="tl-content"><strong>奈良公園 (餵鹿) + 東大寺</strong><p>買鹿仙貝 ¥200，東大寺大佛殿必看</p><button class="btn-map" data-place="東大寺"><i class="fas fa-location-dot"></i> MAP</button></div></div>
                     <div class="timeline-item has-transit"><div class="tl-time">15:30</div><div class="tl-content"><strong>【移動】奈良 → 大阪難波</strong><p>步行至近鐵奈良站，搭近鐵奈良線 (快速急行) 直達大阪難波站 (約 40 分鐘)</p><button class="btn-map" data-place="近鐵奈良站"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">16:30</div><div class="tl-content"><strong>抵達大阪飯店 Check-in</strong><p>飯店：Hotel Boti Boti<br>走法：大阪難波站出站後，找 B20 或 B22 出口，步行 3 分鐘即達</p><button class="btn-map" data-place="Hotel Boti Boti"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                    <div class="timeline-item"><div class="tl-time">16:30</div><div class="tl-content"><strong>抵達大阪飯店 Check-in</strong><p>飯店：HOTEL SOBIAL なんば大国町<br>地址：大阪市浪速区大国1-1-3<br>走法：大阪難波站出站後，找 5 號出口，步行至地鐵大国町站方向約 5 分鐘即達</p><button class="btn-map" data-place="HOTEL SOBIAL"><i class="fas fa-location-dot"></i> MAP</button></div></div>
                     <div class="timeline-item"><div class="tl-time">18:00</div><div class="tl-content"><strong>晚餐 & 逛街：道頓堀 / 心齋橋</strong><p>飯店下樓就是商圈。晚餐推薦大阪燒 (千房/美津)</p><button class="btn-map" data-place="道頓堀"><i class="fas fa-location-dot"></i> MAP</button></div></div>
                     <div class="timeline-item"><div class="tl-time">21:00</div><div class="tl-content"><strong>早睡提醒</strong><p>明天要早起去 USJ！</p><button class="btn-map hotel-return-btn"><i class="fas fa-location-dot"></i> 導航回飯店</button></div></div>
                 </div>
@@ -715,7 +925,7 @@
                     <div class="timeline-item"><div class="tl-time">13:30</div><div class="tl-content"><strong>通天閣 + 新世界</strong><p>從黑門市場步行或搭一站地鐵至惠美須町。體驗大阪老街區</p><button class="btn-map" data-place="通天閣"><i class="fas fa-location-dot"></i> MAP</button></div></div>
                     <div class="timeline-item has-transit"><div class="tl-time">16:00</div><div class="tl-content"><strong>【移動】前往天王寺</strong><p>步行或地鐵至天王寺站</p><button class="btn-map" data-place="天王寺"><i class="fas fa-location-dot"></i> MAP</button></div></div>
                     <div class="timeline-item"><div class="tl-time">16:30</div><div class="tl-content"><strong>阿倍野 Harukas 300 展望台</strong><p>日本第一高樓，有冷氣、有夕陽、有百萬夜景</p><button class="btn-map" data-place="阿倍野Harukas"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">19:30</div><div class="tl-content"><strong>晚餐：國產牛燒肉吃到飽 (あぶりや Aburiya)</strong><p>預約提醒：建議訂天王寺店 (就在阿倍野樓下/附近) 或回到難波道頓堀店吃都可以</p><button class="btn-map hotel-return-btn"><i class="fas fa-location-dot"></i> 導航回飯店</button></div></div>
+                    <div class="timeline-item"><div class="tl-time">19:30</div><div class="tl-content"><strong>晚餐：烤肉力丸 難波湊町店</strong><p>日文：焼肉力丸 なんば湊町店<br>Yakiniku Rikimaru Namba Minatomachi<br>地址：大阪市浪速区湊町1-4-1<br>建議提前線上預約</p><button class="btn-map" data-place="烤肉力丸難波湊町店"><i class="fas fa-location-dot"></i> MAP</button></div></div>
                 </div>
             </div>
 
@@ -867,18 +1077,29 @@
     <div class="modal" id="transitModal">
         <div class="modal-content">
             <button class="modal-close" data-modal="transitModal"><i class="fas fa-xmark"></i></button>
-            <h2>難波交通速查</h2>
+            <h2><i class="fas fa-train"></i> 難波交通速查</h2>
+            <p class="modal-hint" style="margin-bottom: 12px;">從難波出發的常用路線</p>
             <div class="transit-table">
-                <div class="transit-row header"><span>目的地</span><span>搭什麼</span><span>費用</span></div>
-                <div class="transit-row"><span>關西機場</span><span class="line haruka">JR HARUKA（特急直達）</span><span>¥2,380</span></div>
-                <div class="transit-row"><span>關西機場</span><span class="line nankai">南海電鐵</span><span>¥970</span></div>
-                <div class="transit-row"><span>奈良</span><span class="line kintetsu">近鐵電車</span><span>¥680</span></div>
-                <div class="transit-row"><span>梅田</span><span class="line metro">御堂筋線</span><span>¥240</span></div>
-                <div class="transit-row"><span>USJ</span><span class="line hanshin">阪神→JR</span><span>¥450</span></div>
-                <div class="transit-row"><span>京都</span><span class="line haruka">JR HARUKA（特急直達）</span><span>¥2,980</span></div>
-                <div class="transit-row"><span>京都</span><span class="line">阪急電車</span><span>¥400</span></div>
+                <div class="transit-row header"><span>目的地</span><span>搭什麼</span><span>費用</span><span>時間</span></div>
+                <div class="transit-row"><span>關西機場</span><span class="line nankai">南海電鐵 空港急行</span><span>¥970</span><span>45分</span></div>
+                <div class="transit-row"><span>臨空城 Outlet</span><span class="line nankai">南海電鐵</span><span>¥860</span><span>40分</span></div>
+                <div class="transit-row"><span>奈良</span><span class="line kintetsu">近鐵 快速急行</span><span>¥680</span><span>40分</span></div>
+                <div class="transit-row"><span>梅田</span><span class="line metro">御堂筋線</span><span>¥240</span><span>10分</span></div>
+                <div class="transit-row"><span>天王寺</span><span class="line metro">御堂筋線</span><span>¥240</span><span>8分</span></div>
+                <div class="transit-row"><span>USJ</span><span class="line hanshin">阪神→西九條→JR</span><span>¥450</span><span>30分</span></div>
+                <div class="transit-row"><span>京都</span><span class="line metro">御堂筋線→新大阪→JR</span><span>¥900+</span><span>50分</span></div>
+                <div class="transit-row"><span>神戶三宮</span><span class="line hanshin">阪神電車</span><span>¥430</span><span>45分</span></div>
             </div>
-            <div class="tip-box warning" style="margin-top:16px;">避開要加錢的特急：<br>南海 Rapi:t（藍色）<br>近鐵特急（紅色）</div>
+            <div class="tip-box warning" style="margin-top:16px;">
+                <strong>❗ 避開要加錢的特急：</strong><br>
+                • 南海 Rapi:t（藍色特急）+¥530<br>
+                • 近鐵特急（紅色列車）+¥520
+            </div>
+            <div class="tip-box success" style="margin-top:12px;">
+                <strong>✅ 免費急行車推薦：</strong><br>
+                • 南海「空港急行」即可，不用加價<br>
+                • 近鐵「快速急行」即可，不用加價
+            </div>
         </div>
     </div>
 
@@ -886,13 +1107,14 @@
     <div class="modal" id="currencyModal">
         <div class="modal-content">
             <button class="modal-close" data-modal="currencyModal"><i class="fas fa-xmark"></i></button>
-            <h2>匯率換算</h2>
+            <h2><i class="fas fa-yen-sign"></i> 匯率換算</h2>
             <div class="currency-box">
-                <div class="currency-input"><label>日幣 ¥</label><input type="number" id="jpyInput" placeholder="1000"></div>
+                <div class="currency-input"><label>日幣 ¥</label><input type="number" id="jpyInput" placeholder="10000"></div>
                 <div class="currency-arrow"><i class="fas fa-arrows-up-down"></i></div>
-                <div class="currency-input"><label>台幣 NT$</label><input type="number" id="twdInput" placeholder="220"></div>
+                <div class="currency-input"><label>台幣 NT$</label><input type="number" id="twdInput" placeholder="2100"></div>
             </div>
-            <p class="rate-note" id="rateNote">參考匯率：1 JPY ≈ 0.2 TWD</p>
+            <p class="rate-note" id="rateNote">參考匯率：載入中...</p>
+            <p class="rate-update" id="rateUpdate" style="font-size: 0.8rem; color: var(--text-muted); text-align: center;"></p>
             <div class="quick-btns">
                 <button class="quick-btn" data-amount="500">¥500</button>
                 <button class="quick-btn" data-amount="1000">¥1,000</button>
@@ -970,6 +1192,37 @@
                 <button class="btn btn-ghost btn-block" id="downloadImageBtn">
                     <i class="fas fa-image"></i> 下載行程圖片
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 行程編輯 Modal -->
+    <div class="modal" id="editItineraryModal">
+        <div class="modal-content">
+            <button class="modal-close" data-modal="editItineraryModal"><i class="fas fa-xmark"></i></button>
+            <h2><i class="fas fa-pen-to-square"></i> 編輯行程</h2>
+            <div class="edit-form">
+                <div class="form-group">
+                    <label>時間</label>
+                    <input type="text" id="editTime" class="input" placeholder="例如：09:00">
+                </div>
+                <div class="form-group">
+                    <label>行程標題</label>
+                    <input type="text" id="editTitle" class="input" placeholder="例如：抵達關西機場">
+                </div>
+                <div class="form-group">
+                    <label>詳細說明</label>
+                    <textarea id="editDescription" class="textarea" placeholder="交通方式、注意事項等..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>導航地點（日文名稱較準確）</label>
+                    <input type="text" id="editPlace" class="input" placeholder="例如：関西国際空港">
+                </div>
+            </div>
+            <div class="modal-actions" style="margin-top: 16px;">
+                <button class="btn btn-primary" id="saveEditBtn"><i class="fas fa-check"></i> 儲存</button>
+                <button class="btn btn-ghost" id="cancelEditBtn">取消</button>
+                <button class="btn btn-danger" id="deleteItemBtn" style="margin-left: auto;"><i class="fas fa-trash"></i></button>
             </div>
         </div>
     </div>

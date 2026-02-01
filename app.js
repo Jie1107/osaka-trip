@@ -4,7 +4,7 @@
 let shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let checkedItems = JSON.parse(localStorage.getItem("checkedItems")) || [];
-let exchangeRate = 0.2; // 預設匯率 1 JPY = 0.2 TWD
+let exchangeRate = 0.21; // 預設匯率 1 JPY ≈ 0.21 TWD
 
 // ===== 初始化 =====
 document.addEventListener("DOMContentLoaded", () => {
@@ -136,8 +136,8 @@ function initHotel() {
       address: "601-8002 京都府京都市南区東九条上殿田町４８−１",
     },
     osaka: {
-      name: "Hotel Boti Boti",
-      address: "大阪市中央區難波3-8-17",
+      name: "HOTEL SOBIAL なんば大国町",
+      address: "大阪市浪速区大国1-1-3",
     },
   };
 
@@ -196,12 +196,12 @@ function initHotel() {
       hotelNameInput?.value.trim() ||
       (city === "kyoto"
         ? "Hotel M's Est Kyoto Station South"
-        : "Hotel Boti Boti");
+        : "HOTEL SOBIAL なんば大国町");
     const address =
       hotelAddressInput?.value.trim() ||
       (city === "kyoto"
         ? "601-8002 京都府京都市南区東九条上殿田町４８−１"
-        : "大阪市中央區難波3-8-17");
+        : "大阪市浪速区大国1-1-3");
     savedHotels[city] = { name, address };
     localStorage.setItem("hotelsInfo", JSON.stringify(savedHotels));
     updateHotelDisplayByDay(getCurrentDayIdx());
@@ -345,8 +345,8 @@ function initMapButtons() {
             address: "601-8002 京都府京都市南区東九条上殿田町４８−１",
           },
           osaka: {
-            name: "Hotel Boti Boti",
-            address: "大阪市中央區難波3-8-17",
+            name: "HOTEL SOBIAL なんば大国町",
+            address: "大阪市浪速区大国1-1-3",
           },
         };
         const city = dayIdx === 0 || dayIdx === 1 ? "kyoto" : "osaka";
@@ -366,8 +366,8 @@ function initMapButtons() {
             address: "601-8002 京都府京都市南区東九条上殿田町４８−１",
           },
           osaka: {
-            name: "Hotel Boti Boti",
-            address: "大阪市中央區難波3-8-17",
+            name: "HOTEL SOBIAL なんば大国町",
+            address: "大阪市浪速区大国1-1-3",
           },
         };
         // 依目前 day index
@@ -1040,6 +1040,128 @@ function generateShareImage() {
 
   showToast("行程圖已下載");
 }
+
+// ===== 行程編輯功能 =====
+function initItineraryEdit() {
+  const editModal = document.getElementById("editItineraryModal");
+  const saveBtn = document.getElementById("saveEditBtn");
+  const cancelBtn = document.getElementById("cancelEditBtn");
+  const deleteBtn = document.getElementById("deleteItemBtn");
+
+  if (!editModal) return;
+
+  let currentEditItem = null;
+
+  // 為所有 timeline-item 添加編輯按鈕
+  document.querySelectorAll(".timeline-item").forEach((item, index) => {
+    const editBtn = document.createElement("button");
+    editBtn.className = "btn-edit";
+    editBtn.innerHTML = '<i class="fas fa-pen"></i>';
+    editBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openEditModal(item);
+    });
+    item.appendChild(editBtn);
+  });
+
+  function openEditModal(item) {
+    currentEditItem = item;
+    const timeEl = item.querySelector(".tl-time");
+    const titleEl = item.querySelector(".tl-content strong");
+    const descEl = item.querySelector(".tl-content p");
+    const mapBtn = item.querySelector(".btn-map");
+
+    document.getElementById("editTime").value = timeEl?.textContent || "";
+    document.getElementById("editTitle").value = titleEl?.textContent || "";
+    document.getElementById("editDescription").value =
+      descEl?.textContent || "";
+    document.getElementById("editPlace").value = mapBtn?.dataset.place || "";
+
+    editModal.classList.add("active");
+  }
+
+  saveBtn?.addEventListener("click", () => {
+    if (!currentEditItem) return;
+
+    const newTime = document.getElementById("editTime").value.trim();
+    const newTitle = document.getElementById("editTitle").value.trim();
+    const newDesc = document.getElementById("editDescription").value.trim();
+    const newPlace = document.getElementById("editPlace").value.trim();
+
+    const timeEl = currentEditItem.querySelector(".tl-time");
+    const titleEl = currentEditItem.querySelector(".tl-content strong");
+    let descEl = currentEditItem.querySelector(".tl-content p");
+    const mapBtn = currentEditItem.querySelector(".btn-map");
+
+    if (timeEl) timeEl.textContent = newTime;
+    if (titleEl) titleEl.textContent = newTitle;
+
+    if (newDesc) {
+      if (descEl) {
+        descEl.textContent = newDesc;
+      } else {
+        descEl = document.createElement("p");
+        descEl.textContent = newDesc;
+        titleEl?.after(descEl);
+      }
+    }
+
+    if (mapBtn && newPlace) {
+      mapBtn.dataset.place = newPlace;
+    }
+
+    // 儲存到 localStorage
+    saveItineraryChanges();
+
+    editModal.classList.remove("active");
+    showToast("行程已更新");
+  });
+
+  cancelBtn?.addEventListener("click", () => {
+    editModal.classList.remove("active");
+  });
+
+  deleteBtn?.addEventListener("click", () => {
+    if (!currentEditItem) return;
+    if (confirm("確定要刪除這個行程項目嗎？")) {
+      currentEditItem.remove();
+      saveItineraryChanges();
+      editModal.classList.remove("active");
+      showToast("行程已刪除");
+    }
+  });
+
+  // 點擊背景關閉
+  editModal?.addEventListener("click", (e) => {
+    if (e.target === editModal) {
+      editModal.classList.remove("active");
+    }
+  });
+}
+
+function saveItineraryChanges() {
+  // 儲存行程變更到 localStorage
+  const itinerary = {};
+  document.querySelectorAll(".day-page").forEach((dayPage) => {
+    const dayId = dayPage.id;
+    const items = [];
+    dayPage.querySelectorAll(".timeline-item").forEach((item) => {
+      items.push({
+        time: item.querySelector(".tl-time")?.textContent || "",
+        title: item.querySelector(".tl-content strong")?.textContent || "",
+        desc: item.querySelector(".tl-content p")?.textContent || "",
+        place: item.querySelector(".btn-map")?.dataset.place || "",
+      });
+    });
+    itinerary[dayId] = items;
+  });
+  localStorage.setItem("customItinerary", JSON.stringify(itinerary));
+}
+
+// 在 DOMContentLoaded 中初始化
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => initItineraryEdit(), 100);
+});
 
 // ===== Service Worker 註冊 =====
 if ("serviceWorker" in navigator) {
