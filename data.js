@@ -423,7 +423,7 @@ const locations = {
     hours: "11:00-14:30, 17:00-20:30",
   },
   志津香: { name: "志津香", nameJp: "志津香", hours: "11:00-20:00（週三休）" },
-  
+
   // 別名對應（方便 HTML 中使用不同大小寫）
   阿倍野Harukas: {
     name: "阿倍野HARUKAS",
