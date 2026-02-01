@@ -1026,10 +1026,16 @@ body {
 .phrase-en { font-size: 13px; color: var(--info); margin-bottom: 4px; }
 .phrase-tw { font-size: 13px; color: var(--text-muted); }
 
-.phrase-card .copy-btn {
+.phrase-btns {
     position: absolute;
     top: 12px;
     right: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.phrase-card .speak-btn,
+.phrase-card .copy-btn {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -1041,6 +1047,121 @@ body {
     justify-content: center;
     cursor: pointer;
     font-size: 14px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.phrase-card .speak-btn:hover,
+.phrase-card .copy-btn:hover {
+    transform: scale(1.1);
+    background: var(--primary-dark);
+}
+
+.phrase-card .speak-btn {
+    background: var(--success);
+}
+
+.phrase-card .speak-btn:hover {
+    background: #16a34a;
+}
+
+/* ===== Translate Direction ===== */
+.translate-direction {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.direction-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.direction-btn:hover {
+    border-color: var(--primary);
+}
+
+.direction-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.direction-btn i {
+    font-size: 12px;
+}
+
+/* ===== Translate Input Container ===== */
+.translate-input-container {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.translate-input-container .textarea {
+    padding-right: 50px;
+}
+
+.speak-input-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--success);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.speak-input-btn:hover {
+    transform: scale(1.1);
+    background: #16a34a;
+}
+
+/* ===== Translate Buttons ===== */
+.translate-btns .speak-btn,
+.translate-btns .copy-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.translate-btns .speak-btn {
+    background: var(--success);
+    color: white;
+}
+
+.translate-btns .copy-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.translate-btns .speak-btn:hover,
+.translate-btns .copy-btn:hover {
+    transform: scale(1.1);
 }
 
 /* ===== Transit Table ===== */
@@ -1175,6 +1296,12 @@ body {
 .japanese-card .romaji { font-size: 13px; color: var(--primary); margin-bottom: 6px; }
 .japanese-card .meaning { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
 
+.japanese-card .card-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.japanese-card .speak-btn,
 .japanese-card .copy-btn {
     background: var(--primary);
     color: white;
@@ -1183,6 +1310,16 @@ body {
     border-radius: var(--radius-sm);
     font-size: 13px;
     cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.japanese-card .speak-btn {
+    background: var(--success);
+}
+
+.japanese-card .speak-btn:hover,
+.japanese-card .copy-btn:hover {
+    transform: scale(1.02);
 }
 
 /* ===== Photo Diary ===== */

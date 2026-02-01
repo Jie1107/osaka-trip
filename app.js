@@ -6,6 +6,33 @@ let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let checkedItems = JSON.parse(localStorage.getItem("checkedItems")) || [];
 let exchangeRate = 0.21; // 預設匯率 1 JPY ≈ 0.21 TWD
 
+// ===== 語音朗讀 (TTS) =====
+function speakJapanese(text) {
+  // 先停止任何正在播放的語音
+  speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "ja-JP";
+  utterance.rate = 0.9; // 稍慢一點，方便學習
+  utterance.pitch = 1.0;
+
+  // 嘗試尋找日語語音
+  const voices = speechSynthesis.getVoices();
+  const japaneseVoice = voices.find((voice) => voice.lang.includes("ja"));
+  if (japaneseVoice) {
+    utterance.voice = japaneseVoice;
+  }
+
+  speechSynthesis.speak(utterance);
+}
+
+// 確保語音列表載入完成
+if (typeof speechSynthesis !== "undefined") {
+  speechSynthesis.onvoiceschanged = () => {
+    speechSynthesis.getVoices();
+  };
+}
+
 // ===== 初始化 =====
 document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
@@ -790,35 +817,152 @@ async function fetchExchangeRate() {
 }
 
 // ===== 翻譯 =====
+let currentTranslateDirection = "zh-ja"; // 'zh-ja' 或 'ja-zh'
+
 function initTranslate() {
   const translateBtn = document.getElementById("translateBtn");
   const translateInput = document.getElementById("translateInput");
   const translateResult = document.getElementById("translateResult");
+  const translateBtns = document.getElementById("translateBtns");
+  const speakTranslateBtn = document.getElementById("speakTranslateBtn");
+  const copyTranslateBtn = document.getElementById("copyTranslateBtn");
+  const speakInputBtn = document.getElementById("speakInputBtn");
+  const directionBtns = document.querySelectorAll(".direction-btn");
 
   if (!translateBtn) return;
 
+  // 語言方向切換
+  directionBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      directionBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentTranslateDirection = btn.dataset.direction;
+
+      // 更新 placeholder
+      if (currentTranslateDirection === "zh-ja") {
+        translateInput.placeholder = "輸入中文...";
+      } else {
+        translateInput.placeholder = "日本語を入力...";
+      }
+
+      // 清空結果
+      translateResult.textContent = "";
+      translateBtns.style.display = "none";
+    });
+  });
+
+  // 播放輸入文字
+  if (speakInputBtn) {
+    speakInputBtn.addEventListener("click", () => {
+      const text = translateInput.value.trim();
+      if (!text) return;
+
+      if (currentTranslateDirection === "zh-ja") {
+        // 輸入是中文
+        speakText(text, "zh-TW");
+      } else {
+        // 輸入是日文
+        speakText(text, "ja-JP");
+      }
+    });
+  }
+
+  // 翻譯按鈕
   translateBtn.addEventListener("click", async () => {
     const text = translateInput.value.trim();
     if (!text) return;
 
     translateResult.textContent = "翻譯中...";
+    translateBtns.style.display = "none";
 
     try {
-      // 使用 Google Translate 網頁版（非官方 API）
-      const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-TW&tl=ja&dt=t&q=${encodeURIComponent(text)}`;
+      let url;
+      if (currentTranslateDirection === "zh-ja") {
+        // 中文 → 日文
+        url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-TW&tl=ja&dt=t&q=${encodeURIComponent(text)}`;
+      } else {
+        // 日文 → 中文
+        url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=zh-TW&dt=t&q=${encodeURIComponent(text)}`;
+      }
+
       const response = await fetch(url);
       const data = await response.json();
 
       if (data && data[0]) {
         const translated = data[0].map((item) => item[0]).join("");
         translateResult.textContent = translated;
+        translateBtns.style.display = "flex";
       } else {
         translateResult.textContent = "翻譯失敗，請稍後再試";
+        translateBtns.style.display = "none";
       }
     } catch (error) {
       translateResult.textContent = "翻譯服務暫時無法使用";
+      translateBtns.style.display = "none";
     }
   });
+
+  // 播放翻譯結果
+  if (speakTranslateBtn) {
+    speakTranslateBtn.addEventListener("click", () => {
+      const text = translateResult.textContent;
+      if (
+        text &&
+        text !== "翻譯中..." &&
+        text !== "翻譯失敗，請稍後再試" &&
+        text !== "翻譯服務暫時無法使用"
+      ) {
+        // 根據翻譯方向決定播放語言
+        if (currentTranslateDirection === "zh-ja") {
+          // 結果是日文
+          speakText(text, "ja-JP");
+        } else {
+          // 結果是中文
+          speakText(text, "zh-TW");
+        }
+      }
+    });
+  }
+
+  // 複製翻譯結果
+  if (copyTranslateBtn) {
+    copyTranslateBtn.addEventListener("click", () => {
+      const text = translateResult.textContent;
+      if (
+        text &&
+        text !== "翻譯中..." &&
+        text !== "翻譯失敗，請稍後再試" &&
+        text !== "翻譯服務暫時無法使用"
+      ) {
+        copyText(text);
+        const icon = copyTranslateBtn.querySelector("i");
+        icon.className = "fas fa-check";
+        setTimeout(() => {
+          icon.className = "fas fa-copy";
+        }, 1500);
+      }
+    });
+  }
+}
+
+// 通用語音播放函數
+function speakText(text, lang) {
+  speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = lang;
+  utterance.rate = 0.9;
+  utterance.pitch = 1.0;
+
+  const voices = speechSynthesis.getVoices();
+  const matchingVoice = voices.find((voice) =>
+    voice.lang.includes(lang.split("-")[0]),
+  );
+  if (matchingVoice) {
+    utterance.voice = matchingVoice;
+  }
+
+  speechSynthesis.speak(utterance);
 }
 
 // ===== 常用日語 =====
@@ -834,9 +978,14 @@ function initJapanese() {
                 <div class="japanese">${item.japanese}</div>
                 <div class="romaji">${item.romaji}</div>
                 <div class="meaning">${item.meaning}</div>
-                <button class="copy-btn" onclick="copyText('${item.japanese}')">
-                    <i class="fas fa-copy"></i> 複製
-                </button>
+                <div class="card-btns">
+                    <button class="speak-btn" onclick="speakJapanese('${item.japanese.replace(/'/g, "\\'")}')">
+                        <i class="fas fa-volume-high"></i> 播放
+                    </button>
+                    <button class="copy-btn" onclick="copyText('${item.japanese.replace(/'/g, "\\'")}')">
+                        <i class="fas fa-copy"></i> 複製
+                    </button>
+                </div>
             </div>
         `;
   });
@@ -854,6 +1003,22 @@ function initCommunicationModal() {
       modal.classList.add("active");
     });
   }
+
+  // 播放按鈕
+  const speakBtns = modal?.querySelectorAll(".speak-btn");
+  speakBtns?.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const text = btn.dataset.text;
+      speakJapanese(text);
+
+      // 顯示播放中狀態
+      const icon = btn.querySelector("i");
+      icon.className = "fas fa-volume-high fa-beat";
+      setTimeout(() => {
+        icon.className = "fas fa-volume-high";
+      }, 1500);
+    });
+  });
 
   // 複製按鈕
   const copyBtns = modal?.querySelectorAll(".copy-btn");
