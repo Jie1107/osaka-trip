@@ -246,8 +246,8 @@ const locations = {
   },
   // 璃光着物 (和服體驗)
   璃光着物レンタル: {
-    name: "Riko Kimono Rental (璃光着物)",
-    nameJp: "璃光着物レンタル 清水五条坂店",
+    name: "Riko Kimono Rental Kiyomizu Store",
+    nameJp: "璃光着物レンタル 清水本店",
     hours: "9:00-18:00",
   },
   // 阿倍野 Q's Mall

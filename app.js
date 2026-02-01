@@ -137,6 +137,7 @@ function initHotel() {
     },
     osaka: {
       name: "HOTEL SOBIAL なんば大国町",
+      nameJp: "ホテルソビアル なんば大国町",
       address: "大阪市浪速区大国1-1-3",
     },
   };
@@ -348,13 +349,16 @@ function initMapButtons() {
           },
           osaka: {
             name: "HOTEL SOBIAL なんば大国町",
+            nameJp: "ホテルソビアル なんば大国町",
             address: "大阪市浪速区大国1-1-3",
           },
         };
         const city = dayIdx === 0 || dayIdx === 1 ? "kyoto" : "osaka";
-        // 京都飯店用名稱搜尋更準確，大阪用地址
+        // 用日文名稱搜尋更準確
         const searchQuery =
-          city === "kyoto" ? hotels[city].name : hotels[city].address;
+          city === "kyoto"
+            ? hotels[city].name
+            : hotels[city].nameJp || "ホテルソビアル なんば大国町";
         window.open(
           `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`,
           "_blank",
@@ -371,6 +375,7 @@ function initMapButtons() {
           },
           osaka: {
             name: "HOTEL SOBIAL なんば大国町",
+            nameJp: "ホテルソビアル なんば大国町",
             address: "大阪市浪速区大国1-1-3",
           },
         };
@@ -382,9 +387,11 @@ function initMapButtons() {
             ) - 1
           : 0;
         const city = idx === 0 || idx === 1 ? "kyoto" : "osaka";
-        // 京都飯店用名稱搜尋更準確，大阪用地址
+        // 用日文名稱搜尋更準確
         const searchQuery =
-          city === "kyoto" ? hotels[city].name : hotels[city].address;
+          city === "kyoto"
+            ? hotels[city].name
+            : hotels[city].nameJp || "ホテルソビアル なんば大国町";
         window.open(
           `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`,
           "_blank",
@@ -401,7 +408,7 @@ function initMapButtons() {
           // 若地名已含「大阪」「京都」「奈良」等，不再補
           if (!/大阪|京都|奈良/.test(searchQuery)) {
             if (
-              /嵐山|清水寺|伏見|祇園|金閣寺|天龍寺|八坂|河原町|花見小路|二年坂|三年坂/.test(
+              /嵐山|清水寺|伏見|祇園|金閣寺|天龍寺|八坂|河原町|花見小路|二年坂|三年坂|野宮神社|渡月橋|璃光/.test(
                 searchQuery,
               )
             ) {
