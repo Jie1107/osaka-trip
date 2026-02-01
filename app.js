@@ -215,13 +215,15 @@ function initHotel() {
   });
 
   hotelMapBtn?.addEventListener("click", () => {
-    // 根據目前 day index 導航正確飯店，直接用正確地址
+    // 根據目前 day index 導航正確飯店
     const idx = getCurrentDayIdx();
     const city = idx === 0 || idx === 1 ? "kyoto" : "osaka";
-    const address = savedHotels[city].address;
-    if (address) {
+    // 京都飯店用名稱搜尋更準確，大阪用地址
+    const searchQuery =
+      city === "kyoto" ? savedHotels[city].name : savedHotels[city].address;
+    if (searchQuery) {
       window.open(
-        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`,
         "_blank",
       );
     }
@@ -350,9 +352,11 @@ function initMapButtons() {
           },
         };
         const city = dayIdx === 0 || dayIdx === 1 ? "kyoto" : "osaka";
-        const address = hotels[city].address;
+        // 京都飯店用名稱搜尋更準確，大阪用地址
+        const searchQuery =
+          city === "kyoto" ? hotels[city].name : hotels[city].address;
         window.open(
-          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
+          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`,
           "_blank",
         );
         return;
@@ -378,9 +382,11 @@ function initMapButtons() {
             ) - 1
           : 0;
         const city = idx === 0 || idx === 1 ? "kyoto" : "osaka";
-        const address = hotels[city].address;
+        // 京都飯店用名稱搜尋更準確，大阪用地址
+        const searchQuery =
+          city === "kyoto" ? hotels[city].name : hotels[city].address;
         window.open(
-          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
+          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`,
           "_blank",
         );
         return;
