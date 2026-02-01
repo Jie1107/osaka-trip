@@ -797,6 +797,36 @@ function initCurrency() {
 }
 
 async function fetchExchangeRate() {
+  const rateNote = document.getElementById("rateNote");
+  const jpyInput = document.getElementById("jpyInput");
+  const twdInput = document.getElementById("twdInput");
+
+  try {
+    // 使用 rter.info API（資料來源包含台銀等多家銀行）
+    const response = await fetch("https://tw.rter.info/capi.php");
+    if (response.ok) {
+      const data = await response.json();
+      // USDJPY 和 USDTWD 來計算 JPYTWD
+      if (data.USDJPY && data.USDTWD) {
+        const usdToJpy = data.USDJPY.Exrate;
+        const usdToTwd = data.USDTWD.Exrate;
+        exchangeRate = usdToTwd / usdToJpy;
+
+        // 更新 placeholder
+        if (jpyInput) jpyInput.placeholder = "1000";
+        if (twdInput) twdInput.placeholder = Math.round(1000 * exchangeRate);
+
+        if (rateNote) {
+          rateNote.innerHTML = `即時匯率：1 JPY ≈ <strong>${exchangeRate.toFixed(4)}</strong> TWD<br><span style="font-size:11px;color:var(--text-muted);">資料來源：台銀等銀行加權</span>`;
+        }
+        return;
+      }
+    }
+  } catch (error) {
+    console.log("rter.info 無法連線，嘗試備用來源");
+  }
+
+  // 備用：ExchangeRate-API
   try {
     const response = await fetch(
       "https://api.exchangerate-api.com/v4/latest/JPY",
@@ -809,8 +839,11 @@ async function fetchExchangeRate() {
     console.log("無法獲取即時匯率，使用預設值");
   }
 
+  // 更新 placeholder
+  if (jpyInput) jpyInput.placeholder = "1000";
+  if (twdInput) twdInput.placeholder = Math.round(1000 * exchangeRate);
+
   // 更新顯示
-  const rateNote = document.getElementById("rateNote");
   if (rateNote) {
     rateNote.textContent = `即時匯率：1 JPY ≈ ${exchangeRate.toFixed(4)} TWD`;
   }
