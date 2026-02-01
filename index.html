@@ -1176,10 +1176,25 @@
                 </button>
             </div>
             
+            <!-- 翻譯提示 -->
+            <div class="translate-tips" id="translateTips">
+                <i class="fas fa-lightbulb"></i>
+                <span>提示：輸入完整句子效果更好，例如「我想點餐」比「點餐」更準確</span>
+            </div>
+            
             <!-- 輸入區 -->
             <div class="translate-input-container">
                 <textarea id="translateInput" class="textarea" placeholder="輸入文字..."></textarea>
-                <button class="speak-input-btn" id="speakInputBtn" title="播放輸入文字"><i class="fas fa-volume-high"></i></button>
+                <div class="input-btns">
+                    <button class="mic-btn" id="micBtn" title="語音輸入"><i class="fas fa-microphone"></i></button>
+                    <button class="speak-input-btn" id="speakInputBtn" title="播放輸入文字"><i class="fas fa-volume-high"></i></button>
+                </div>
+            </div>
+            
+            <!-- 語音輸入狀態 -->
+            <div class="voice-status" id="voiceStatus" style="display: none;">
+                <div class="voice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+                <span>聲音辨識中...</span>
             </div>
             
             <button class="btn btn-primary btn-block" id="translateBtn">

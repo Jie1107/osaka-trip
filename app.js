@@ -818,6 +818,8 @@ async function fetchExchangeRate() {
 
 // ===== 翻譯 =====
 let currentTranslateDirection = "zh-ja"; // 'zh-ja' 或 'ja-zh'
+let speechRecognition = null;
+let isListening = false;
 
 function initTranslate() {
   const translateBtn = document.getElementById("translateBtn");
@@ -827,9 +829,15 @@ function initTranslate() {
   const speakTranslateBtn = document.getElementById("speakTranslateBtn");
   const copyTranslateBtn = document.getElementById("copyTranslateBtn");
   const speakInputBtn = document.getElementById("speakInputBtn");
+  const micBtn = document.getElementById("micBtn");
+  const voiceStatus = document.getElementById("voiceStatus");
+  const translateTips = document.getElementById("translateTips");
   const directionBtns = document.querySelectorAll(".direction-btn");
 
   if (!translateBtn) return;
+
+  // 初始化語音辨識
+  initSpeechRecognition();
 
   // 語言方向切換
   directionBtns.forEach((btn) => {
@@ -838,18 +846,45 @@ function initTranslate() {
       btn.classList.add("active");
       currentTranslateDirection = btn.dataset.direction;
 
-      // 更新 placeholder
+      // 更新 placeholder 和提示
       if (currentTranslateDirection === "zh-ja") {
         translateInput.placeholder = "輸入中文...";
+        if (translateTips) {
+          translateTips.innerHTML =
+            '<i class="fas fa-lightbulb"></i><span>提示：輸入完整句子效果更好，例如「我想點餐」比「點餐」更準確</span>';
+        }
       } else {
         translateInput.placeholder = "日本語を入力...";
+        if (translateTips) {
+          translateTips.innerHTML =
+            '<i class="fas fa-lightbulb"></i><span>ヒント：ひらがなで入力すると準確度が高くなります</span>';
+        }
       }
+
+      // 更新語音辨識語言
+      updateRecognitionLanguage();
 
       // 清空結果
       translateResult.textContent = "";
       translateBtns.style.display = "none";
     });
   });
+
+  // 語音輸入按鈕
+  if (micBtn) {
+    micBtn.addEventListener("click", () => {
+      if (!speechRecognition) {
+        showToast("您的瀏覽器不支援語音輸入");
+        return;
+      }
+
+      if (isListening) {
+        stopListening();
+      } else {
+        startListening();
+      }
+    });
+  }
 
   // 播放輸入文字
   if (speakInputBtn) {
@@ -858,10 +893,8 @@ function initTranslate() {
       if (!text) return;
 
       if (currentTranslateDirection === "zh-ja") {
-        // 輸入是中文
         speakText(text, "zh-TW");
       } else {
-        // 輸入是日文
         speakText(text, "ja-JP");
       }
     });
@@ -878,10 +911,8 @@ function initTranslate() {
     try {
       let url;
       if (currentTranslateDirection === "zh-ja") {
-        // 中文 → 日文
         url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-TW&tl=ja&dt=t&q=${encodeURIComponent(text)}`;
       } else {
-        // 日文 → 中文
         url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=zh-TW&dt=t&q=${encodeURIComponent(text)}`;
       }
 
@@ -901,6 +932,76 @@ function initTranslate() {
       translateBtns.style.display = "none";
     }
   });
+
+  // 語音辨識函數
+  function initSpeechRecognition() {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      console.log("瀏覽器不支援語音辨識");
+      if (micBtn) micBtn.style.display = "none";
+      return;
+    }
+
+    speechRecognition = new SpeechRecognition();
+    speechRecognition.continuous = false;
+    speechRecognition.interimResults = true;
+    updateRecognitionLanguage();
+
+    speechRecognition.onstart = () => {
+      isListening = true;
+      if (micBtn) micBtn.classList.add("listening");
+      if (voiceStatus) voiceStatus.style.display = "flex";
+    };
+
+    speechRecognition.onresult = (event) => {
+      let transcript = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript;
+      }
+      translateInput.value = transcript;
+    };
+
+    speechRecognition.onend = () => {
+      isListening = false;
+      if (micBtn) micBtn.classList.remove("listening");
+      if (voiceStatus) voiceStatus.style.display = "none";
+    };
+
+    speechRecognition.onerror = (event) => {
+      console.error("語音辨識錯誤:", event.error);
+      isListening = false;
+      if (micBtn) micBtn.classList.remove("listening");
+      if (voiceStatus) voiceStatus.style.display = "none";
+
+      if (event.error === "not-allowed") {
+        showToast("請允許麥克風權限");
+      } else if (event.error === "no-speech") {
+        showToast("未偵測到聲音");
+      }
+    };
+  }
+
+  function updateRecognitionLanguage() {
+    if (!speechRecognition) return;
+    speechRecognition.lang =
+      currentTranslateDirection === "zh-ja" ? "zh-TW" : "ja-JP";
+  }
+
+  function startListening() {
+    if (!speechRecognition) return;
+    updateRecognitionLanguage();
+    try {
+      speechRecognition.start();
+    } catch (e) {
+      console.error("啟動語音辨識失敗:", e);
+    }
+  }
+
+  function stopListening() {
+    if (!speechRecognition) return;
+    speechRecognition.stop();
+  }
 
   // 播放翻譯結果
   if (speakTranslateBtn) {
