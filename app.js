@@ -257,7 +257,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function renderItinerary() {
+  
+    // Countdown Timer
+    const targetDate = new Date('2026-07-27T00:00:00');
+    const today = new Date();
+    const diffTime = targetDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    setTimeout(() => {
+        const badge = document.getElementById('countdown-badge');
+        if (badge) {
+            if (diffDays > 0) {
+                badge.innerHTML = `<i class="fa-solid fa-plane-up"></i> 距離出發還剩 ${diffDays} 天！期待嗎？`;
+            } else if (diffDays === 0) {
+                badge.innerHTML = `<i class="fa-solid fa-plane-up"></i> 就是今天！旅途愉快！`;
+                badge.style.background = '#ff9500';
+            } else {
+                badge.innerHTML = `<i class="fa-solid fa-map-pin"></i> 旅程已圓滿完成！`;
+            }
+        }
+    }, 100);
+
+    function renderItinerary() {
     if (!window.tripData || !window.tripData.days) return;
 
     // Render horizontal tabs
@@ -269,6 +290,8 @@ document.addEventListener("DOMContentLoaded", () => {
       tab.addEventListener("click", () => {
         activeDayIndex = index;
         renderItinerary();
+        if(window.updateLiveActivity) window.updateLiveActivity();
+        if(window.updateDailyMap) window.updateDailyMap();
         // Smooth scroll to top of timeline
         document.querySelector("main").scrollTo({ top: 0, behavior: "smooth" });
       });
@@ -313,12 +336,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     timelineContainer.innerHTML = html;
-    // Trigger reflow for animation
+    
+        // Update Smart Hotel Card
+        const hotelCard = document.getElementById('smart-hotel-card');
+        const hotelName = document.getElementById('smart-hotel-name');
+        const hotelNav = document.getElementById('smart-hotel-nav');
+        
+        if (hotelCard) {
+            let hotel = "";
+            let query = "";
+            if (activeDayIndex === 0 || activeDayIndex === 1) {
+                hotel = "Hotel M's Est 京都站南";
+                query = "Hotel M's Est 京都站南";
+                hotelCard.style.display = 'flex';
+            } else if (activeDayIndex >= 2 && activeDayIndex <= 4) {
+                hotel = "HOTEL SOBIAL 難波大國町";
+                query = "HOTEL SOBIAL 難波大國町";
+                hotelCard.style.display = 'flex';
+            } else {
+                hotelCard.style.display = 'none'; // 最後一天不顯示飯店
+            }
+            if (hotel) {
+                hotelName.textContent = hotel;
+                hotelNav.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+            }
+        }
+        
+        // Trigger reflow for animation
+
     timelineContainer.style.animation = "none";
     void timelineContainer.offsetHeight;
     timelineContainer.style.animation = "fadeIn 0.3s ease";
   }
   renderItinerary();
+        if(window.updateLiveActivity) window.updateLiveActivity();
+        if(window.updateDailyMap) window.updateDailyMap();
 
   // ---- Render Checklist ----
   const checklistContainer = document.getElementById("checklist-container");

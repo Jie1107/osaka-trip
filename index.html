@@ -28,23 +28,53 @@
         </div>
         <main id="app-content">
             <!-- 1. 行程總覽 -->
-            <section id="view-itinerary" class="view active">
+            <section id="view-itinerary" class="view" style="display: none;">
                 
                 <div class="header-card">
                     <div id="live-weather-rate" class="live-badge"><span><i class="fa-solid fa-spinner fa-spin"></i> 同步大版即時天氣與匯率...</span></div>
                     <div class="header-card-bg"></div>
                     <h2>京阪神 6 天自由行</h2>
                     <p><i class="fa-regular fa-calendar" style="margin-right:6px;"></i> 2026/7/27 - 8/1 <span style="margin:0 10px;">|</span> <i class="fa-solid fa-plane-departure" style="margin-right:6px;"></i> 國泰航空</p>
+                    <div id="countdown-badge" style="background:rgba(255,255,255,0.25); border:1px solid rgba(255,255,255,0.4); padding:6px 16px; border-radius:20px; display:inline-block; margin-top:12px; font-size:14px; font-weight:bold; backdrop-filter:blur(5px); box-shadow:0 4px 10px rgba(0,0,0,0.1);"><i class="fa-solid fa-spinner fa-spin"></i> 倒數計算中...</div>
+                    <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: flex-start; flex-wrap: wrap;">
+                        <button onclick="document.getElementById('nav-tools').click()" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 6px 12px; border-radius: 15px; font-size: 13px; font-weight: bold;"><i class="fa-solid fa-yen-sign"></i> 匯率</button>
+                        <button onclick="document.getElementById('nav-checklist').click()" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 6px 12px; border-radius: 15px; font-size: 13px; font-weight: bold;"><i class="fa-solid fa-suitcase"></i> 行李</button>
+                    </div>
+
                 </div>
                 
                 <div class="day-tabs" id="day-tabs">
                     <!-- Dynamic Tabs injected via JS -->
                 </div>
                 
+                
+                <div id="smart-hotel-card" style="margin: 0 20px 20px 20px; padding: 15px; background: var(--card-bg); border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <div style="font-size:12px; color:var(--text-secondary); font-weight:bold; margin-bottom:4px;"><i class="fa-solid fa-bed"></i> 今日入住飯店</div>
+                        <div id="smart-hotel-name" style="font-size:15px; font-weight:800; color:var(--text-primary);">載入中...</div>
+                    </div>
+                    <a id="smart-hotel-nav" href="#" target="_blank" style="background:var(--primary-color); color:white; padding:8px 12px; border-radius:10px; font-size:13px; font-weight:bold; text-decoration:none;"><i class="fa-solid fa-location-arrow"></i> 導航</a>
+                </div>
                 <div class="timeline-container" id="timeline-content">
                     <!-- Dynamic Timeline injected via JS -->
                 </div>
-            </section>
+            
+            <h3 style="font-size:16px; margin: 20px 0 10px 0; color:var(--text-primary);"><i class="fa-solid fa-truck-medical" style="color:#ff3b30;"></i> 緊急救援 (離線可用)</h3>
+            <div class="tool-card">
+                 <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border-color);">
+                     <div><strong style="color:#ff3b30;">報警 (警察)</strong><br><span style="font-size:12px; color:var(--text-secondary);">日本全國通用</span></div>
+                     <a href="tel:110" style="background:#ff3b30; color:white; padding:6px 15px; border-radius:15px; text-decoration:none; font-weight:bold;"><i class="fa-solid fa-phone"></i> 110</a>
+                 </div>
+                 <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border-color);">
+                     <div><strong style="color:#ff3b30;">救護車 / 火災</strong><br><span style="font-size:12px; color:var(--text-secondary);">日本全國通用</span></div>
+                     <a href="tel:119" style="background:#ff3b30; color:white; padding:6px 15px; border-radius:15px; text-decoration:none; font-weight:bold;"><i class="fa-solid fa-phone"></i> 119</a>
+                 </div>
+                 <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0;">
+                     <div><strong>台北駐大阪經濟文化辦事處</strong><br><span style="font-size:12px; color:var(--text-secondary);">護照遺失/急難救助</span></div>
+                     <a href="tel:+81-80-6505-4528" style="background:#007aff; color:white; padding:6px 15px; border-radius:15px; text-decoration:none; font-weight:bold;"><i class="fa-solid fa-phone"></i> 撥打</a>
+                 </div>
+            </div>
+</section>
 
             <!-- 2. 旅行地圖 -->
             <section id="view-map" class="view">
@@ -69,6 +99,18 @@
             <!-- 4. 實用工具 -->
             <section id="view-tools" class="view">
                 <div class="tools-grid">
+
+                    <div class="tool-card" onclick="openAccounting()">
+                        <div class="icon" style="color: #ff2d55;"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                        <h3>記帳本</h3>
+                        <p>旅行記帳與統計</p>
+                    </div>
+                    <div class="tool-card" onclick="openShoppingList()">
+                        <div class="icon" style="color: #ff9500;"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <h3>購物清單</h3>
+                        <p>必買伴手禮與藥妝</p>
+                    </div>
+
 
                     
                     <div class="tool-card" onclick="openGacha()">
@@ -133,11 +175,11 @@
                 <i class="fa-solid fa-location-dot"></i>
                 <span>地圖</span>
             </a>
-            <a href="#" class="nav-item" data-target="view-checklist" data-title="行李清單">
+            <a href="#" class="nav-item" id="nav-checklist" data-target="view-checklist" data-title="行李清單">
                 <i class="fa-solid fa-suitcase-rolling"></i>
                 <span>清單</span>
             </a>
-            <a href="#" class="nav-item" data-target="view-tools" data-title="實用工具">
+            <a href="#" class="nav-item" id="nav-tools" data-target="view-tools" data-title="實用工具">
                 <i class="fa-solid fa-toolbox"></i>
                 <span>工具</span>
             </a>
