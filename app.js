@@ -442,7 +442,7 @@ function initMapButtons() {
               searchQuery += " 京都";
             } else if (/奈良|東大寺|春日大社|鹿/.test(searchQuery)) {
               searchQuery += " 奈良";
-            } else if (!/USJ|ユニバーサル|環球/.test(searchQuery)) {
+            } else if (!/姬路|神戶|USJ|環球/.test(searchQuery)) {
               searchQuery += " 大阪";
             }
           }

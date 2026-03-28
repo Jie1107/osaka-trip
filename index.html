@@ -42,7 +42,7 @@
                     <li><input type="checkbox" data-todo="flight"> 機票（國泰航空官網/旅行社）：7/27 桃園出發、8/1 關西回程</li>
                     <li><input type="checkbox" data-todo="hotel"> 住宿(agoda/booking用my way 卡)：京都 (2晚)：京都站南 M's Est；大阪 (3晚)：HOTEL SOBIAL なんば大国町</li>
                     <li><input type="checkbox" data-todo="haruka"> JR HARUKA 車票 (去程單程：KIX→京都)（LinePay/Klook）</li>
-                    <li><input type="checkbox" data-todo="tickets"> 大眾運輸/景點票券確認 (Enjoy Eco Card、Harukas 300等)</li>
+                    <li><input type="checkbox" data-todo="ticket"> 姬路城 / 神戶等交通票券準備（LinePay/Klook）</li>
                     <li><input type="checkbox" data-todo="harukas"> 阿倍野 Harukas 300 門票（LinePay/Klook）</li>
                     <li><input type="checkbox" data-todo="suica"> 交通卡：手機綁 Suica，並先儲值好 ¥5000</li>
                     <li><input type="checkbox" data-todo="esim"> eSIM 可以不同家</li>
@@ -85,7 +85,7 @@
                     <span class="trip-tag"><i class="fas fa-users"></i> 學生情侶</span>
                     <span class="trip-tag"><i class="fas fa-plane"></i> 桃園→關西 7/27、關西→桃園 8/1</span>
                     <span class="trip-tag"><i class="fas fa-bed"></i> 京都2晚/大阪3晚</span>
-                    <span class="trip-tag haruka"><i class="fas fa-ticket"></i> HARUKA/勝尾寺/Harukas 300</span>
+                    <span class="trip-tag haruka"><i class="fas fa-ticket"></i> HARUKA/姬路城/Harukas 300</span>
                     <span class="trip-tag"><i class="fas fa-credit-card"></i> ICOCA/Suica</span>
                     <span class="trip-tag alert"><i class="fas fa-fish"></i> 不吃海鮮</span>
                 </div>
@@ -166,7 +166,10 @@
                         <i class="fas fa-utensils"></i>
                         <span>食べログ</span>
                     </a>
-                    
+                    <a href="https://www.usj.co.jp/" target="_blank" class="link-item">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        <span>姬路城官網</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -190,7 +193,7 @@
                                             <div class="accordion-body">
                                                 <ul class="check-list">
                                                     <li><i class="fas fa-ticket haruka"></i> <b class="haruka-text">JR HARUKA 特急車票</b>（Klook/官方，電子票可直接刷 QR Code）</li>
-                                                    <li><i class="fas fa-ticket"></i> <b>大眾運輸優惠票券</b>（一日券等確認）</li>
+                                                    <li><i class="fas fa-ticket"></i> <b>景點門票</b>（行程相關 App 綁定，建議提早買票）</li>
                                                     <li><i class="fas fa-ticket"></i> <b>阿倍野 Harukas 300 展望台門票</b>（Klook/官網預約）</li>
                                                     <li><i class="fas fa-ticket"></i> <b>國產牛燒肉吃到飽（あぶりや）</b>（建議線上預約天王寺店或難波店）</li>
                                                     <li><i class="fas fa-ticket"></i> <b>ICOCA/Suica 交通卡</b>（可於台灣先購買或日本機場現場購買）</li>
@@ -773,7 +776,7 @@
                                     <div class="line-badge hanshin">阪神</div>
                                     <div class="line-info">
                                         <strong>阪神電車</strong>
-                                        <p>往 尼崎、神戶三宮</p>
+                                        <p>往 神戶、姬路</p>
                                         <p class="line-hint">找黃色「阪神」招牌・B1F</p>
                                     </div>
                                     <button class="btn-map-sm" data-place="阪神難波駅"><i class="fas fa-location-dot"></i></button>
@@ -850,7 +853,7 @@
         </section>
 
         <!-- ===== 行程 ===== -->
-                <section class="tab-page" id="tab-itinerary">
+        <section class="tab-page" id="tab-itinerary">
             <div class="day-nav">
                 <button class="day-btn active" data-day="1">Day 1</button>
                 <button class="day-btn" data-day="2">Day 2</button>
@@ -860,7 +863,6 @@
                 <button class="day-btn" data-day="6">Day 6</button>
             </div>
 
-            
             <!-- Day 1 -->
             <div class="day-page active" id="day-1">
                 <div class="day-header day1"><h2>Day 1</h2><p>桃園機場 → 關西機場 → 京都</p></div>
@@ -934,7 +936,45 @@
                 </div>
             </div>
 
-        </main>
+        </section>
+
+        <!-- ===== 清單 ===== -->
+        <section class="tab-page" id="tab-lists">
+            <div class="sub-nav">
+                <button class="sub-nav-btn active" data-subtab="packing">行前檢查</button>
+                <button class="sub-nav-btn" data-subtab="shopping">購物清單</button>
+            </div>
+
+            <div class="sub-page active" id="subtab-packing">
+                <div class="progress-card">
+                    <div class="progress-bar"><div class="progress-fill" id="packingProgress"></div></div>
+                    <span id="packingProgressText">0/0</span>
+                </div>
+                <div id="packingChecklist" class="checklist-container"></div>
+            </div>
+
+            <div class="sub-page" id="subtab-shopping">
+                <div class="tip-box info">同一店家滿 ¥5,500 可退稅（約 10%）<br>消耗品會封袋，出境前不可拆封！</div>
+                <div class="add-item-row">
+                    <input type="text" id="shoppingItemInput" placeholder="想買的東西..." class="input">
+                    <button class="btn btn-primary" id="addShoppingBtn"><i class="fas fa-plus"></i></button>
+                </div>
+                <div id="shoppingList" class="item-list"></div>
+            </div>
+        </section>
+
+        <!-- ===== 工具 ===== -->
+        <section class="tab-page" id="tab-tools">
+            <div class="tools-grid">
+                <div class="tool-card" id="emergencyToolBtn"><i class="fas fa-phone-volume"></i><span>緊急求救</span></div>
+                <div class="tool-card" id="transitToolBtn"><i class="fas fa-train"></i><span>難波交通</span></div>
+                <div class="tool-card" id="currencyToolBtn"><i class="fas fa-yen-sign"></i><span>匯率換算</span></div>
+                <div class="tool-card" id="expenseToolBtn"><i class="fas fa-receipt"></i><span>快速記帳</span></div>
+                <div class="tool-card" id="translateToolBtn"><i class="fas fa-language"></i><span>中日翻譯</span></div>
+                <div class="tool-card" id="japaneseToolBtn"><i class="fas fa-comment-dots"></i><span>常用日語</span></div>
+            </div>
+        </section>
+    </main>
 
     <!-- Bottom Nav -->
     <nav class="bottom-nav">
@@ -1039,7 +1079,7 @@
                 <div class="transit-row"><span>奈良</span><span class="line kintetsu">近鐵 快速急行</span><span>¥680</span><span>40分</span></div>
                 <div class="transit-row"><span>梅田</span><span class="line metro">御堂筋線</span><span>¥240</span><span>10分</span></div>
                 <div class="transit-row"><span>天王寺</span><span class="line metro">御堂筋線</span><span>¥240</span><span>8分</span></div>
-                <div class="transit-row"><span>勝尾寺</span><span class="line midosuji">御堂筋線/公車</span><span>約¥700</span><span>50分</span></div>
+                <div class="transit-row"><span>神戶</span><span class="line hanshin">阪神本線快速急行</span><span>¥420</span><span>45分</span></div>
                 <div class="transit-row"><span>京都</span><span class="line metro">御堂筋線→新大阪→JR</span><span>¥900+</span><span>50分</span></div>
                 <div class="transit-row"><span>神戶三宮</span><span class="line hanshin">阪神電車</span><span>¥430</span><span>45分</span></div>
             </div>
@@ -1062,7 +1102,7 @@
             <button class="modal-close" data-modal="currencyModal"><i class="fas fa-xmark"></i></button>
             <h2><i class="fas fa-yen-sign"></i> 匯率換算</h2>
             <div class="currency-box">
-                <div class="currency-input"><label>日幣 ¥</label><input type="number" id="jpyInput" placeholder="1000"></div>
+                <div class="currency-input"><label>日幣 ¥</label><input type="number" id="jpyInput" 台灣銀行牌告匯率（但需要爬取）="1000"></div>
                 <div class="currency-arrow"><i class="fas fa-arrows-up-down"></i></div>
                 <div class="currency-input"><label>台幣 NT$</label><input type="number" id="twdInput" placeholder="204"></div>
             </div>
@@ -1173,7 +1213,7 @@
                         <span>Day 1 道頓堀</span>
                         <span>Day 2 大阪城</span>
                         <span>Day 3 京都</span>
-                        <span>Day 4 梅田</span>
+                        <span>Day 4 姬路城</span>
                         <span>Day 5 黑門市場</span>
                         <span>Day 6 OUTLET</span>
                     </div>
