@@ -1433,12 +1433,19 @@ function initShare() {
 function generateShareText() {
   let text = `✈️ 京阪神 6 天自由行\n`;
   text += `📅 2026/7/27 - 8/1\n\n`;
-  text += `Day 1｜台灣→關西機場→京都\n`;
-  text += `Day 2｜嵐山・清水寺・祇園\n`;
-  text += `Day 3｜伏見稻荷・奈良・大阪\n`;
-  text += `Day 4｜USJ 環球影城全日\n`;
-  text += `Day 5｜大阪市區・阿倍野展望台\n`;
-  text += `Day 6｜臨空城OUTLET・回台灣\n\n`;
+  text += `Day 1｜啟程與京都初夜
+`;
+  text += `Day 2｜嵐山晨光與清水道浴衣行
+`;
+  text += `Day 3｜伏見稻荷・奈良・前進大阪
+`;
+  text += `Day 4｜達摩勝尾寺與梅田商圈
+`;
+  text += `Day 5｜大阪市區漫遊
+`;
+  text += `Day 6｜臨空城最後衝刺與溫暖返家
+
+`;
   text += `👫 學生情侶 | 🚫 不吃海鮮\n`;
   return text;
 }
@@ -1473,7 +1480,7 @@ function generateShareImage() {
     { day: "Day 1", title: "台灣→關西機場→京都" },
     { day: "Day 2", title: "嵐山・清水寺・祇園" },
     { day: "Day 3", title: "伏見稻荷・奈良・大阪" },
-    { day: "Day 4", title: "USJ 環球影城全日" },
+    { day: "Day 4", title: "姬路城・神戶" },
     { day: "Day 5", title: "大阪市區・阿倍野展望台" },
     { day: "Day 6", title: "臨空城OUTLET・回台灣" },
   ];

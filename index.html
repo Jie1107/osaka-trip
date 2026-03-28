@@ -42,7 +42,7 @@
                     <li><input type="checkbox" data-todo="flight"> 機票（國泰航空官網/旅行社）：7/27 桃園出發、8/1 關西回程</li>
                     <li><input type="checkbox" data-todo="hotel"> 住宿(agoda/booking用my way 卡)：京都 (2晚)：京都站南 M's Est；大阪 (3晚)：HOTEL SOBIAL なんば大国町</li>
                     <li><input type="checkbox" data-todo="haruka"> JR HARUKA 車票 (去程單程：KIX→京都)（LinePay/Klook）</li>
-                    <li><input type="checkbox" data-todo="usj"> USJ 門票 (Day 4 用，記得存入 USJ App)（LinePay/Klook）</li>
+                    <li><input type="checkbox" data-todo="tickets"> 大眾運輸/景點票券確認 (Enjoy Eco Card、Harukas 300等)</li>
                     <li><input type="checkbox" data-todo="harukas"> 阿倍野 Harukas 300 門票（LinePay/Klook）</li>
                     <li><input type="checkbox" data-todo="suica"> 交通卡：手機綁 Suica，並先儲值好 ¥5000</li>
                     <li><input type="checkbox" data-todo="esim"> eSIM 可以不同家</li>
@@ -85,7 +85,7 @@
                     <span class="trip-tag"><i class="fas fa-users"></i> 學生情侶</span>
                     <span class="trip-tag"><i class="fas fa-plane"></i> 桃園→關西 7/27、關西→桃園 8/1</span>
                     <span class="trip-tag"><i class="fas fa-bed"></i> 京都2晚/大阪3晚</span>
-                    <span class="trip-tag haruka"><i class="fas fa-ticket"></i> HARUKA/USJ/Harukas 300</span>
+                    <span class="trip-tag haruka"><i class="fas fa-ticket"></i> HARUKA/勝尾寺/Harukas 300</span>
                     <span class="trip-tag"><i class="fas fa-credit-card"></i> ICOCA/Suica</span>
                     <span class="trip-tag alert"><i class="fas fa-fish"></i> 不吃海鮮</span>
                 </div>
@@ -166,10 +166,7 @@
                         <i class="fas fa-utensils"></i>
                         <span>食べログ</span>
                     </a>
-                    <a href="https://www.usj.co.jp/" target="_blank" class="link-item">
-                        <i class="fas fa-wand-magic-sparkles"></i>
-                        <span>USJ 官網</span>
-                    </a>
+                    
                 </div>
             </div>
         </section>
@@ -193,7 +190,7 @@
                                             <div class="accordion-body">
                                                 <ul class="check-list">
                                                     <li><i class="fas fa-ticket haruka"></i> <b class="haruka-text">JR HARUKA 特急車票</b>（Klook/官方，電子票可直接刷 QR Code）</li>
-                                                    <li><i class="fas fa-ticket"></i> <b>USJ 門票</b>（USJ App 綁定，建議加購快速通關）</li>
+                                                    <li><i class="fas fa-ticket"></i> <b>大眾運輸優惠票券</b>（一日券等確認）</li>
                                                     <li><i class="fas fa-ticket"></i> <b>阿倍野 Harukas 300 展望台門票</b>（Klook/官網預約）</li>
                                                     <li><i class="fas fa-ticket"></i> <b>國產牛燒肉吃到飽（あぶりや）</b>（建議線上預約天王寺店或難波店）</li>
                                                     <li><i class="fas fa-ticket"></i> <b>ICOCA/Suica 交通卡</b>（可於台灣先購買或日本機場現場購買）</li>
@@ -776,7 +773,7 @@
                                     <div class="line-badge hanshin">阪神</div>
                                     <div class="line-info">
                                         <strong>阪神電車</strong>
-                                        <p>往 USJ（西九條轉 JR）、神戶</p>
+                                        <p>往 尼崎、神戶三宮</p>
                                         <p class="line-hint">找黃色「阪神」招牌・B1F</p>
                                     </div>
                                     <button class="btn-map-sm" data-place="阪神難波駅"><i class="fas fa-location-dot"></i></button>
@@ -853,7 +850,7 @@
         </section>
 
         <!-- ===== 行程 ===== -->
-        <section class="tab-page" id="tab-itinerary">
+                <section class="tab-page" id="tab-itinerary">
             <div class="day-nav">
                 <button class="day-btn active" data-day="1">Day 1</button>
                 <button class="day-btn" data-day="2">Day 2</button>
@@ -863,141 +860,81 @@
                 <button class="day-btn" data-day="6">Day 6</button>
             </div>
 
+            
             <!-- Day 1 -->
             <div class="day-page active" id="day-1">
-                <div class="day-header day1"><h2>Day 1 · 7/27 (一)</h2><p>航班抵達・入住京都</p></div>
+                <div class="day-header day1"><h2>Day 1</h2><p>桃園機場 → 關西機場 → 京都</p></div>
                 <div class="timeline">
-                    <div class="timeline-item"><div class="tl-time">14:55</div><div class="tl-content"><strong>航班抵達關西機場 (KIX)</strong><p>CX564 航班抵達</p><button class="btn-map" data-place="關西國際機場第一航廈"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">15:00<br>~16:30</div><div class="tl-content"><strong>入境通關戰役</strong><p>暑期旺季預估通關需 60-90 分鐘<br>利用此時間開啟網卡、準備好 HARUKA QR Code</p></div></div>
-                    <div class="timeline-item has-transit"><div class="tl-time">16:43</div><div class="tl-content"><strong>【交通】JR 特急 HARUKA (40號)</strong><p>路線：關西空港站 → 京都站<br>車程：約 80 分鐘<br>備案：若通關延遲，搭 17:16 (42號) 或 17:46 (44號)<br>💡 建議在機場超商先買好飲料與輕食</p><button class="btn-map" data-place="関西国際空港駅"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">18:04</div><div class="tl-content"><strong>抵達京都車站 & Check-in</strong><p>飯店：Hotel M's Est Kyoto Station South<br>走法：往車站 2F 找「西口」改札口出站 → 往「八條口 (南口)」指標走 → 下一樓出站過馬路即達</p><button class="btn-map" data-place="Hotel M's Est Kyoto Station South"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">18:45</div><div class="tl-content"><strong>【晚餐】京都勝牛 (京都站前店)</strong><p>離飯店步行範圍內<br>💡 若現場排隊超過 30 分鐘，建議改去車站地下街 (Porta) 用餐</p><button class="btn-map" data-place="京都勝牛"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">20:30</div><div class="tl-content"><strong>回飯店休息</strong><p>為明天早起儲備體力</p><button class="btn-map hotel-return-btn"><i class="fas fa-location-dot"></i> 導航回飯店</button></div></div>
+                    <div class="timeline-item has-transit"><div class="tl-time">11:05</div><div class="tl-content"><strong>【航班】國泰CX 564</strong><p>桃園機場第一航廈出發</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">14:55</div><div class="tl-content"><strong>【抵達】關西機場</strong><p>第一航廈入境</p></div></div>
+                    <div class="timeline-item has-transit"><div class="tl-time">午後</div><div class="tl-content"><strong>【交通】HARUKA 直達京都</strong><p>約80分鐘車程</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">傍晚</div><div class="tl-content"><strong>【住宿】Check-in</strong><p>Hotel M's Est Kyoto Station South</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">晚上</div><div class="tl-content"><strong>【晚餐】鴨川/先斗町</strong><p>散步 & 晚餐：京都勝牛</p></div></div>
                 </div>
             </div>
 
             <!-- Day 2 -->
             <div class="day-page" id="day-2">
-                <div class="day-header day2"><h2>Day 2 · 7/28 (二)</h2><p>嵐山橫斷清水道</p></div>
+                <div class="day-header day2"><h2>Day 2</h2><p>嵐山・清水寺・祇園</p></div>
                 <div class="timeline">
-                    <div class="timeline-item"><div class="tl-time">05:20</div><div class="tl-content"><strong>【起床】飯店 → 嵐山</strong><p>走法：京都車站 32/33 月台 搭乘 JR 嵯峨野線<br>發車：06:20 (往園部)<br>下車：JR 嵯峨嵐山站 (06:36 抵達)</p><button class="btn-map" data-place="嵐山竹林"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">06:50</div><div class="tl-content"><strong>嵐山竹林小徑 + 野宮神社</strong><p>趁早晨無人時拍照</p><button class="btn-map" data-place="野宮神社"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">08:00</div><div class="tl-content"><strong>天龍寺</strong><p>曹源池庭園・坐在大方丈榻榻米上欣賞</p><button class="btn-map" data-place="天龍寺"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">08:40</div><div class="tl-content"><strong>嵐山大街 + 渡月橋</strong><p>點心：抹茶冰淇淋、ARABICA 咖啡</p><button class="btn-map" data-place="渡月橋"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item has-transit"><div class="tl-time">10:08</div><div class="tl-content"><strong>【移動】嵐山 → 清水寺</strong><p>交通：搭乘 10:08 發 (快速) 或 10:13 發 (普通)<br>轉乘：從「中央口」出站，排隊搭計程車直達「二年坂」</p><button class="btn-map" data-place="清水寺"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">11:20</div><div class="tl-content"><strong>【和服體驗】Riko Kimono Rental (璃光着物)</strong><p>⚠️ 務必預約 11:30 或 12:00 時段</p><button class="btn-map" data-place="璃光着物レンタル"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">12:10</div><div class="tl-content"><strong>清水寺 + 二年坂 + 法觀 + 花見 + 八坂</strong><p>⚠️ 正午極熱，若感到不適請躲進沿途店家</p><button class="btn-map" data-place="清水寺"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">16:30</div><div class="tl-content"><strong>歸還和服</strong><p>💡 建議拍完照提早歸還，換回輕便服裝去逛街較舒適</p></div></div>
-                    <div class="timeline-item"><div class="tl-time">18:00</div><div class="tl-content"><strong>【晚餐】河原町商圈 / 鴨川納涼床</strong><p>推薦：一蘭拉麵 京都河原町店 或 壽喜燒</p><button class="btn-map" data-place="河原町"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">20:00</div><div class="tl-content"><strong>回飯店</strong><p>⚠️ 重要任務：整理行李<br>務必將 Day 3~5 的大行李整理好，準備明天一早寄出</p><button class="btn-map hotel-return-btn"><i class="fas fa-location-dot"></i> 導航回飯店</button></div></div>
+                    <div class="timeline-item"><div class="tl-time">上午</div><div class="tl-content"><strong>【景點】嵐山</strong><p>嵐山竹林小徑、野宮神社、天龍寺、渡月橋</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">中午</div><div class="tl-content"><strong>【午餐】嵐山周邊</strong><p>廣川鰻魚飯 或 嵐山吉村</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">下午</div><div class="tl-content"><strong>【景點】清水寺周邊</strong><p>清水寺、二年坂三年坂、花見小路、八坂神社、祇園</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">晚上</div><div class="tl-content"><strong>【晚餐】</strong><p>名代豬排 或 一蘭拉麵</p></div></div>
                 </div>
             </div>
 
             <!-- Day 3 -->
             <div class="day-page" id="day-3">
-                <div class="day-header day3"><h2>Day 3 · 7/29 (三)</h2><p>伏見稻荷・奈良・大阪</p></div>
+                <div class="day-header day3"><h2>Day 3</h2><p>伏見稻荷・奈良・大阪</p></div>
                 <div class="timeline">
-                    <div class="timeline-item"><div class="tl-time">07:00</div><div class="tl-content"><strong>【起床】& 寄行李</strong><p>在飯店櫃檯（或超商）將大行李寄往大阪飯店<br>身上只背輕便背包</p></div></div>
-                    <div class="timeline-item has-transit"><div class="tl-time">08:02</div><div class="tl-content"><strong>【移動】京都 → 伏見稻荷</strong><p>交通：搭乘 JR 奈良線 (普通 往奈良)<br>時刻：08:02 發 → 08:15 抵達 稻荷站<br>💡 避開 9 點後千本鳥居的人潮</p><button class="btn-map" data-place="伏見稻荷大社"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">08:15</div><div class="tl-content"><strong>伏見稻荷大社 (千本鳥居)</strong><p>走到「奧社」折返即可</p><button class="btn-map" data-place="伏見稻荷大社"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item has-transit"><div class="tl-time">10:30</div><div class="tl-content"><strong>【移動】伏見稻荷 → 奈良</strong><p>交通：搭乘 JR 奈良線 (普通 往奈良)<br>時刻：10:30 發 → 11:40 抵達 JR 奈良站</p><button class="btn-map" data-place="奈良公園"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">11:45</div><div class="tl-content"><strong>【午餐】牛Mabushi 三山 (牛まぶし三山)</strong><button class="btn-map" data-place="牛まぶし三山"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">13:00</div><div class="tl-content"><strong>奈良公園 (餵鹿) + 東大寺</strong><p>💡 建議：搭公車至東大寺大佛殿，再慢慢走下坡回車站</p><button class="btn-map" data-place="東大寺"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item has-transit"><div class="tl-time">15:34</div><div class="tl-content"><strong>【移動】奈良 → 大阪難波</strong><p>交通：從 近鐵奈良站 搭乘 快速急行 (Rapid Exp.)<br>時刻：15:34 發 → 16:07 抵達 大阪難波站</p><button class="btn-map" data-place="近鐵奈良站"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">16:30</div><div class="tl-content"><strong>抵達大阪飯店 Check-in</strong><p>飯店：HOTEL SOBIAL なんば大国町<br>地址：大阪市浪速区大国1-1-3</p><button class="btn-map" data-place="HOTEL SOBIAL"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">18:00</div><div class="tl-content"><strong>【晚餐】道頓堀 / 心齋橋</strong><p>飯店下樓就是商圈</p><button class="btn-map" data-place="道頓堀"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">20:00</div><div class="tl-content"><strong>補給（心齋橋）與早睡</strong><p>買好明天的早餐（飯糰/麵包）與飲用水<br>明天要早起去 USJ！</p><button class="btn-map hotel-return-btn"><i class="fas fa-location-dot"></i> 導航回飯店</button></div></div>
+                    <div class="timeline-item"><div class="tl-time">上午</div><div class="tl-content"><strong>【景點】伏見稻荷大社</strong><p>千本鳥居</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">中午</div><div class="tl-content"><strong>【午餐】奈良志津香釜飯 或 烏龍麵</strong><p>午餐</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">下午</div><div class="tl-content"><strong>【景點】奈良公園</strong><p>餵鹿 + 東大寺</p></div></div>
+                    <div class="timeline-item has-transit"><div class="tl-time">傍晚</div><div class="tl-content"><strong>【移動】前往大阪</strong><p>Check-in: HOTEL SOBIAL なんば大国町 (大阪難波)</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">晚上</div><div class="tl-content"><strong>【晚餐 / 逛街】</strong><p>道頓堀 / 心齋橋</p></div></div>
                 </div>
             </div>
 
             <!-- Day 4 -->
             <div class="day-page" id="day-4">
-                <div class="day-header day4"><h2>Day 4 · 7/30 (四)</h2><p>USJ 環球影城</p></div>
-                <div class="tip-box danger" style="margin:16px;">⚠️ USJ 門票要先網路買，記得存入 USJ App</div>
+                <div class="day-header day4"><h2>Day 4</h2><p>姬路城・神戶</p></div>
                 <div class="timeline">
-                    <div class="timeline-item"><div class="tl-time">05:30</div><div class="tl-content"><strong>【起床】</strong><p>提早起床準備</p></div></div>
-                    <div class="timeline-item has-transit"><div class="tl-time">06:29</div><div class="tl-content"><strong>【移動】飯店 → USJ</strong><p>路線：走去 大阪難波站 搭 阪神電車 (快速急行 往尼崎)<br>時刻：06:29 發 → 06:37 抵達 西九條<br>轉乘：西九條站 轉搭 JR 夢咲線 (06:43 發) → 06:48 抵達 Universal City 站<br>💡 提早抵達安檢口，對搶整理券至關重要</p><button class="btn-map" data-place="環球影城"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">07:00</div><div class="tl-content"><strong>USJ 門口排隊 & 吃早餐</strong><p>目標 07:00-07:15 抵達安檢口</p></div></div>
-                    <div class="timeline-item"><div class="tl-time">07:30</div><div class="tl-content"><strong>開門衝刺 (Rope Drop)</strong><p>關鍵動作：一入園（過閘門），立刻打開 App 抽「任天堂世界」整理券</p></div></div>
-                    <div class="timeline-item"><div class="tl-time">07:45</div><div class="tl-content"><strong>入園第一站：咚奇剛的瘋狂礦車</strong><p>💡 策略：若沒抽到整理券或不想賭，一入園直接競走到任天堂園區<br>若已管制且沒券，改衝好萊塢美夢乘車遊</p></div></div>
-                    <div class="timeline-item"><div class="tl-time">09:00</div><div class="tl-content"><strong>第二站：哈利波特禁忌之旅</strong><button class="btn-map" data-place="哈利波特魔法世界"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">10:30</div><div class="tl-content"><strong>第三站：飛天翼龍</strong><p>💡 必用密技：使用「單人通道 (Single Rider)」，可節省一半以上排隊時間</p></div></div>
-                    <div class="timeline-item"><div class="tl-time">12:30</div><div class="tl-content"><strong>【午餐】室內避暑</strong><p>推薦：三根掃帚 (哈利波特區) 或 史努比快餐<br>⚠️ 12:00-15:00 避免在戶外曝曬排隊，請看室內表演（水世界、歌唱秀）</p></div></div>
-                    <div class="timeline-item"><div class="tl-time">16:00</div><div class="tl-content"><strong>水世界表演 / 遊行</strong></div></div>
-                    <div class="timeline-item"><div class="tl-time">19:00</div><div class="tl-content"><strong>離園 & 晚餐</strong><p>晚餐：烤肉力丸 難波湊町店<br>💡 務必提前一個月預約</p><button class="btn-map" data-place="烤肉力丸難波湊町店"><i class="fas fa-location-dot"></i> MAP</button></div></div>
+                    <div class="timeline-item has-transit"><div class="tl-time">上午</div><div class="tl-content"><strong>【交通】前往姬路</strong><p>阪神難波線 → 神戶三宮 → 姬路</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">上午</div><div class="tl-content"><strong>【景點】姬路城</strong><p>世界遺產，好古園抹茶體驗</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">下午</div><div class="tl-content"><strong>【景點】神戶三宮/元町商圈</strong><p>逛街</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">晚上</div><div class="tl-content"><strong>【晚餐】神戶牛鐵板燒</strong><p>Ishida 或 莫利亞</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">晚上</div><div class="tl-content"><strong>【景點】神戶港夜景</strong><p>美利堅公園看夜景</p></div></div>
                 </div>
             </div>
 
             <!-- Day 5 -->
             <div class="day-page" id="day-5">
-                <div class="day-header day5"><h2>Day 5 · 7/31 (五)</h2><p>大阪漫遊</p></div>
+                <div class="day-header day5"><h2>Day 5</h2><p>大阪市區・阿倍野展望台</p></div>
                 <div class="timeline">
-                    <div class="timeline-item"><div class="tl-time">08:30</div><div class="tl-content"><strong>【起床】</strong><p>終於可以晚起</p></div></div>
-                    <div class="timeline-item"><div class="tl-time">09:30</div><div class="tl-content"><strong>【移動】飯店 → 難波八坂神社</strong><p>步行前往</p><button class="btn-map" data-place="難波八坂神社"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item has-transit"><div class="tl-time">10:20</div><div class="tl-content"><strong>【移動】飯店 → 大阪城公園</strong><p>路線：御堂筋線/中央線 (難波→本町→谷町四丁目)<br>💡 建議：不登天守閣，僅在戶外護城河拍照，或參觀海洋堂博物館</p><button class="btn-map" data-place="大阪城"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">11:30</div><div class="tl-content"><strong>【早午餐】黑門市場</strong><p>體驗：現場挑選烤和牛、炸物、水果</p><button class="btn-map" data-place="黑門市場"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">13:00</div><div class="tl-content"><strong>通天閣 + 新世界</strong><p>體驗大阪老街區</p><button class="btn-map" data-place="通天閣"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">14:00</div><div class="tl-content"><strong>【逛街】阿倍野 Q's Mall 或 Mio 百貨</strong><button class="btn-map" data-place="阿倍野 Q's Mall"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">16:30</div><div class="tl-content"><strong>阿倍野 Harukas 300 展望台</strong><p>日本第一高樓，有冷氣、有夕陽、有百萬夜景</p><button class="btn-map" data-place="阿倍野Harukas"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">18:30</div><div class="tl-content"><strong>【晚餐】梅田商圈 / 太累就回道頓堀</strong><button class="btn-map" data-place="梅田"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">19:53</div><div class="tl-content"><strong>回飯店</strong><button class="btn-map hotel-return-btn"><i class="fas fa-location-dot"></i> 導航回飯店</button></div></div>
+                    <div class="timeline-item"><div class="tl-time">早上</div><div class="tl-content"><strong>【早餐】黑門市場</strong><p>海鮮、和牛</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">上午</div><div class="tl-content"><strong>【景點】日本橋電器街</strong><p>動漫、模型</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">中午</div><div class="tl-content"><strong>【景點】大阪城公園</strong><p>天守閣外圍</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">下午</div><div class="tl-content"><strong>【景點】通天閣 / 新世界</strong><p>可吃炸串</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">傍晚</div><div class="tl-content"><strong>【景點】阿倍野HARUKAS 300</strong><p>展望台看夕陽夜景</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">晚上</div><div class="tl-content"><strong>【晚餐】烤肉力丸</strong><p>難波湊町店</p></div></div>
                 </div>
             </div>
 
             <!-- Day 6 -->
             <div class="day-page" id="day-6">
-                <div class="day-header day6"><h2>Day 6 · 8/1 (六)</h2><p>Rinku Outlet・CX565 返程</p></div>
+                <div class="day-header day6"><h2>Day 6</h2><p>臨空城OUTLET・回台灣</p></div>
                 <div class="timeline">
-                    <div class="timeline-item"><div class="tl-time">07:30</div><div class="tl-content"><strong>【起床】</strong></div></div>
-                    <div class="timeline-item"><div class="tl-time">08:30</div><div class="tl-content"><strong>Check-out & 出發</strong><p>帶著行李前往南海難波站 (3F)</p><button class="btn-map" data-place="南海難波駅"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item has-transit"><div class="tl-time">09:24</div><div class="tl-content"><strong>【移動】飯店 → 臨空城</strong><p>交通：搭乘 南海電鐵 空港急行 (09:24 發)<br>下車：臨空城站 (Rinku Town) 10:02 抵達</p><button class="btn-map" data-place="臨空城Outlet"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">10:10</div><div class="tl-content"><strong>行李寄放</strong><p>💡 策略：建議優先寄放在「臨空城車站內」的置物櫃</p></div></div>
-                    <div class="timeline-item"><div class="tl-time">10:30</div><div class="tl-content"><strong>大理石海灘 (Marble Beach)</strong><p>白色海灘拍照，看飛機起降</p><button class="btn-map" data-place="大理石海灘"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">11:00</div><div class="tl-content"><strong>Rinku Premium Outlets</strong><p>最後補貨 (Adidas, Nike, Coach 等)<br>午餐：Kua Aina 漢堡 (Seacle 商場 2F) 或 Outlet 美食街</p><button class="btn-map" data-place="臨空城Outlet"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item has-transit"><div class="tl-time">13:15</div><div class="tl-content"><strong>【移動】臨空城 → 關西機場</strong><p>交通：走回「臨空城車站」搭乘 JR 或 南海電鐵（約 5-10 分一班）<br>⚠️ Outlet 往機場的接駁巴士中午時段班次極少，搭電車最保險（車程僅 6 分鐘）</p></div></div>
-                    <div class="timeline-item"><div class="tl-time">13:30</div><div class="tl-content"><strong>抵達機場 & 報到</strong><p>航班：CX565 (16:15 起飛)</p><button class="btn-map" data-place="關西國際機場第一航廈"><i class="fas fa-location-dot"></i> MAP</button></div></div>
-                    <div class="timeline-item"><div class="tl-time">16:15</div><div class="tl-content"><strong>起飛返回台北</strong><p>預計 18:15 抵達桃園機場</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">早上</div><div class="tl-content"><strong>【住宿】退房</strong><p>飯店退房</p></div></div>
+                    <div class="timeline-item has-transit"><div class="tl-time">上午</div><div class="tl-content"><strong>【交通】前往臨空城</strong><p>南海電鐵 → 臨空城站</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">中午</div><div class="tl-content"><strong>【景點】臨空城OUTLET</strong><p>最後購物時間</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">下午</div><div class="tl-content"><strong>【機場】關西國際機場</strong><p>第一航廈報到</p></div></div>
+                    <div class="timeline-item has-transit"><div class="tl-time">16:15</div><div class="tl-content"><strong>【航班】國泰航空 CX 565</strong><p>16:15 - 18:15 回台灣</p></div></div>
+                    <div class="timeline-item"><div class="tl-time">18:15</div><div class="tl-content"><strong>【抵達】抵達台灣</strong><p>桃園國際機場第一航廈</p></div></div>
                 </div>
             </div>
-        </section>
 
-        <!-- ===== 清單 ===== -->
-        <section class="tab-page" id="tab-lists">
-            <div class="sub-nav">
-                <button class="sub-nav-btn active" data-subtab="packing">行前檢查</button>
-                <button class="sub-nav-btn" data-subtab="shopping">購物清單</button>
-            </div>
-
-            <div class="sub-page active" id="subtab-packing">
-                <div class="progress-card">
-                    <div class="progress-bar"><div class="progress-fill" id="packingProgress"></div></div>
-                    <span id="packingProgressText">0/0</span>
-                </div>
-                <div id="packingChecklist" class="checklist-container"></div>
-            </div>
-
-            <div class="sub-page" id="subtab-shopping">
-                <div class="tip-box info">同一店家滿 ¥5,500 可退稅（約 10%）<br>消耗品會封袋，出境前不可拆封！</div>
-                <div class="add-item-row">
-                    <input type="text" id="shoppingItemInput" placeholder="想買的東西..." class="input">
-                    <button class="btn btn-primary" id="addShoppingBtn"><i class="fas fa-plus"></i></button>
-                </div>
-                <div id="shoppingList" class="item-list"></div>
-            </div>
-        </section>
-
-        <!-- ===== 工具 ===== -->
-        <section class="tab-page" id="tab-tools">
-            <div class="tools-grid">
-                <div class="tool-card" id="emergencyToolBtn"><i class="fas fa-phone-volume"></i><span>緊急求救</span></div>
-                <div class="tool-card" id="transitToolBtn"><i class="fas fa-train"></i><span>難波交通</span></div>
-                <div class="tool-card" id="currencyToolBtn"><i class="fas fa-yen-sign"></i><span>匯率換算</span></div>
-                <div class="tool-card" id="expenseToolBtn"><i class="fas fa-receipt"></i><span>快速記帳</span></div>
-                <div class="tool-card" id="translateToolBtn"><i class="fas fa-language"></i><span>中日翻譯</span></div>
-                <div class="tool-card" id="japaneseToolBtn"><i class="fas fa-comment-dots"></i><span>常用日語</span></div>
-            </div>
-        </section>
-    </main>
+        </main>
 
     <!-- Bottom Nav -->
     <nav class="bottom-nav">
@@ -1102,7 +1039,7 @@
                 <div class="transit-row"><span>奈良</span><span class="line kintetsu">近鐵 快速急行</span><span>¥680</span><span>40分</span></div>
                 <div class="transit-row"><span>梅田</span><span class="line metro">御堂筋線</span><span>¥240</span><span>10分</span></div>
                 <div class="transit-row"><span>天王寺</span><span class="line metro">御堂筋線</span><span>¥240</span><span>8分</span></div>
-                <div class="transit-row"><span>USJ</span><span class="line hanshin">阪神→西九條→JR</span><span>¥450</span><span>30分</span></div>
+                <div class="transit-row"><span>勝尾寺</span><span class="line midosuji">御堂筋線/公車</span><span>約¥700</span><span>50分</span></div>
                 <div class="transit-row"><span>京都</span><span class="line metro">御堂筋線→新大阪→JR</span><span>¥900+</span><span>50分</span></div>
                 <div class="transit-row"><span>神戶三宮</span><span class="line hanshin">阪神電車</span><span>¥430</span><span>45分</span></div>
             </div>
@@ -1236,7 +1173,7 @@
                         <span>Day 1 道頓堀</span>
                         <span>Day 2 大阪城</span>
                         <span>Day 3 京都</span>
-                        <span>Day 4 USJ</span>
+                        <span>Day 4 梅田</span>
                         <span>Day 5 黑門市場</span>
                         <span>Day 6 OUTLET</span>
                     </div>
